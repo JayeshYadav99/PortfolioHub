@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useGlobalContext } from './Context';
 
 export default function EduHome() {
+  
+;
   return (
     <div>
       <section>
@@ -13,7 +16,7 @@ export default function EduHome() {
               </h1>
               <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400"></p>
               <Link
-                to="/authentication" // Update the route to your authentication page
+                to="/Auth" // Update the route to your authentication page
                 className="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
               >
                 Get started
@@ -58,10 +61,10 @@ export default function EduHome() {
                   />
                 </div>
                 <h3 className="mb-2 text-xl font-bold dark:text-white">
-                  Secure Authentication and Single Sign-On (SSO)
+                Customizable portfolio templates
                 </h3>
                 <p className="text-gray-500 dark:text-gray-400">
-                  Utilize Auth0's authentication APIs to provide secure login and registration for students, faculty, and staff members. Implement SSO functionality to allow seamless access to various tools and services within Campus CodeHub.
+                Choose from a variety of professionally designed templates to showcase your personal portfolio. Customize the layout, colors, and fonts to match your style.
                 </p>
                 <Link
                   to="/authentication" // Update the route to your authentication page
@@ -80,10 +83,11 @@ export default function EduHome() {
                   />
                 </div>
                 <h3 className="mb-2 text-xl font-bold dark:text-white">
-                  Code Collaboration and Version Control
+                Flexible sections
                 </h3>
                 <p className="text-gray-500 dark:text-gray-400">
-                  Integrate GitHub repositories to enable students to create, collaborate on, and manage their coding projects. Implement features like pull requests, code reviews, and issue tracking for efficient collaboration among team members.
+                Create and organize sections such as About Me, Experience, Projects, Skills, Education, and Contact Information. Easily rearrange the sections to highlight your strengths and achievements.
+
                 </p>
                 <Link
                   to="/Repo" // Update the route to your GitHub integration page
@@ -101,11 +105,12 @@ export default function EduHome() {
                   />
                 </div>
                 <h3 className="mb-2 text-xl font-bold dark:text-white">
-                  Project Showcase and Portfolio Builder
+                Showcase your projects:
                 </h3>
                 <p className="text-gray-500 dark:text-gray-400">
-                  Provide a dedicated space for students to showcase their coding projects, assignments, and achievements. Enable students to build a comprehensive coding portfolio by connecting their GitHub repositories to their profiles.
-                </p>
+                Display your projects with images, descriptions, and relevant details. Engage potential clients or employers by demonstrating your skills and expertise.
+    </p>
+
                 <Link
                   to="/portfolio" // Update the route to your portfolio page
                   className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
@@ -143,11 +148,13 @@ export default function EduHome() {
                   />
                 </div>
                 <h3 className="mb-2 text-xl font-bold dark:text-white">
-                  Hackathon and Coding Events
+                Highlight your skills
                 </h3>
                 <p className="text-gray-500 dark:text-gray-400">
-                  Organize virtual hackathons and coding events within the platform to foster a sense of community and healthy competition among students. Integrate features for team formation, project submission, judging, and prize distribution.
-                </p>
+                Emphasize your skills, certifications, and achievements. Let others know about your expertise and what sets you apart from others in your field.
+    </p>
+
+                
                 <Link
                   to="/hackathon" // Update the route to your hackathon page
                   className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
@@ -164,10 +171,12 @@ export default function EduHome() {
                   />
                 </div>
                 <h3 className="mb-2 text-xl font-bold dark:text-white">
-                  MongoDB-powered Data Management
+                Add interactive elements
                 </h3>
                 <p className="text-gray-500 dark:text-gray-400">
-                  Utilize MongoDB Atlas as the backend database to store and manage user profiles, project data, and learning progress. Leverage MongoDB's querying and indexing capabilities to provide fast and efficient data retrieval.
+                Incorporate interactive
+            features like hover effects, image galleries, sliders, or
+            interactive infographics to captivate your audience.
                 </p>
                 <Link
                   to="/mongodb" // Update the route to your MongoDB integration page

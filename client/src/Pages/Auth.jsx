@@ -6,6 +6,7 @@ import axios from "axios";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { useAuth0 } from '@auth0/auth0-react';
+import { useGlobalContext } from './Context';
 
 const Auth = () => {
     console.log(import.meta.env.VITE_AUTH0_MANAGEMENT_API_KEY);
@@ -16,8 +17,10 @@ const [repoColors, setRepoColors] = useState(colors);
   const [repoData, setRepoData] = useState([]);
   const [repoLanguageData, setRepoLanguageData] = useState([]);
   const [showRepos, setShowRepos] = useState(false);
-  const { auth0, isLoading, isAuthenticated ,getAccessTokenSilently} = useAuth0();
+  const { user, isLoading, isAuthenticated ,getAccessTokenSilently} = useAuth0();
   const[githubtoken,SetgithubToken]=useState('');
+console.log(useGlobalContext);
+  const {saveUser} = useGlobalContext();
 
 
   
@@ -48,6 +51,10 @@ const Myuser = await fetchUserInfo(accessToken);
 
 // 4. Extract the user ID from the user info
 const userId = Myuser.sub;
+if(Myuser)
+{
+  saveUser(Myuser);
+}
 
 // 5. Log the user ID
 console.log(userId);
