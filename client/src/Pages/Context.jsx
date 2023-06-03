@@ -1,13 +1,18 @@
 import axios from 'axios';
 import React, { useContext, useState, useEffect } from 'react';
-
+import { useAuth0 } from "@auth0/auth0-react";
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [user, setUser] = useState(null);
+  
+  const { user, isAuthenticated, isLoading } = useAuth0();
+  
+  const [isoLoading, setIsLoading] = useState(true);
+  const [ouser, setUser] = useState(null);
   const saveUser = (user) => {
+    console.log(user);
     setUser(user);
+    console.log(ouser);
   };
 
   const removeUser = () => {
@@ -16,23 +21,31 @@ const AppProvider = ({ children }) => {
 
   const fetchUser = async () => {
     try {
-      const { data } = await axios.get(`https://authentication-rb8w.onrender.com/profile`);
-      console.log(data);
-      saveUser(JSON.parse(data.userProfile));
+      if (isAuthenticated) {
+        console.log(ouser);
+         console.log(user);
+        saveUser(user);
+       
+      }
+
     } catch (error) {
       removeUser();
     }
     setIsLoading(false);
   };
 
+  // useEffect(() => {
+  //  fetchUser();
+  
+  
+  // }, [])
+  
   const logoutUser = async () => {
     try {
-     const response= await axios.get('http://localhost:5000/logout');
-     console.log(response.data);
-     if(response.data)
-     {
+
+
       removeUser();
-     }
+
 
       console.log(user);
     } catch (error) {
@@ -40,16 +53,14 @@ const AppProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    fetchUser();
-  }, []);
+console.log(ouser);
 
   return (
     <AppContext.Provider
       value={{
-        isLoading,
+        isoLoading,
         saveUser,
-        user,
+        ouser,
         logoutUser,
       }}
     >
@@ -58,8 +69,8 @@ const AppProvider = ({ children }) => {
   );
 };
 // make sure use
-export const useGlobalContext = () => {
+ const useGlobalContext = () => {
   return useContext(AppContext);
 };
 
-export { AppProvider };
+export { useGlobalContext,AppProvider };

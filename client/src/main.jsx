@@ -4,7 +4,8 @@ import App from './App.jsx'
 import './style/index.css'
 import { BrowserRouter } from "react-router-dom";
 import { Auth0Provider } from "@auth0/auth0-react";
-// import { GlobalProvider } from './GlobalContext';
+import { AppProvider } from './Pages/Context'
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
 <Auth0Provider
@@ -12,14 +13,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     clientId="d9LXHADHfiX1FSRNaJpkegmWAgz1jRtP"
     authorizationParams={{
       redirect_uri: window.location.origin,
-      useRefreshTokens: true
+      // useRefreshTokens: true
     }}
     cacheLocation="localstorage"
   >
     <BrowserRouter>
-    {/* <GlobalProvider> */}
+    <AppProvider>
     <App />
-    {/* </GlobalProvider> */}
+    </AppProvider>
     </BrowserRouter>
     </Auth0Provider>
 
