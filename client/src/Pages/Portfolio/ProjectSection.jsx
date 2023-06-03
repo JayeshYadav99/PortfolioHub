@@ -1,80 +1,193 @@
-import React from "react";
-import "./ProjectSection.css"; // Import your CSS file
+import React, { useState } from "react";
+import "./ProjectSection.css";
+const ProjectSection = () => {
+  const modalInfo = {
+    1: {
+      title: "Project 1",
+      info: "...",
+      link: "https://devpost.com/software/padawan-academy",
+      github: "#",
+    },
+    2: {
+      title: "Project 2",
+      info: "...",
+      link: "#",
+      github: "#",
+    },
+    3: {
+      title: "Project 3",
+      info: "...",
+      link: "#",
+      github: "#",
+    },
+    4: {
+      title: "Project 4",
+      info: "....",
+      link: "#",
+      github: "#",
+    },
+    5: {
+      title: "Project 5",
+      info: "...",
+      link: "#",
+      github: "#",
+    },
+    6: {
+      title: "Project 6",
+      info: "...",
+      link: "#",
+      github: "#",
+    },
+  };
 
-function ProjectSection() {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modalContent, setModalContent] = useState({
+    id: null,
+    img: "",
+    title: "",
+    info: "",
+    link: "",
+    github: "",
+  });
+
+  const openModal = (id, img) => {
+    setModalContent({
+      id,
+      img,
+      title: modalInfo[id].title,
+      info: modalInfo[id].info,
+      link: modalInfo[id].link,
+      github: modalInfo[id].github,
+    });
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+
   return (
-    <section className="portfolio-section bg-gray-900" id="portfolio">
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-lg-12 text-center">
-            <h2>Project Gallery</h2>
-            <p>Use all the same size pictures :)</p>
+    <section>
+      <h1>Projects</h1>
+
+      <div className="container">
+        <div className="item" id="1">
+          <img
+            src="https://images.unsplash.com/photo-1508124780861-b1687f9a13e5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f841d43a63c085e930aa5b6b33e89a9f&auto=format&fit=crop&w=1385&q=80"
+            alt=""
+          />
+          <div className="text">
+            <h3>PROJECT 1</h3>
+            <p>Short Description</p>
+          </div>
+          <div
+            className="button"
+            onClick={() =>
+              openModal(
+                1,
+                "https://images.unsplash.com/photo-1508124780861-b1687f9a13e5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f841d43a63c085e930aa5b6b33e89a9f&auto=format&fit=crop&w=1385&q=80"
+              )
+            }
+          >
+            Learn More
           </div>
         </div>
-        <div className="portfolio-menu mt-2 mb-4">
-          <nav className="controls">
-            <button type="button" className="control outline" data-filter="all">
-              All
-            </button>
-            <button
-              type="button"
-              className="control outline"
-              data-filter=".web"
-            >
-              Web Design
-            </button>
-            <button
-              type="button"
-              className="control outline"
-              data-filter=".dev"
-            >
-              Development
-            </button>
-            <button type="button" className="control outline" data-filter=".wp">
-              WordPress
-            </button>
-          </nav>
+        <div className="item" id="2">
+          <img
+            src="https://images.unsplash.com/photo-1508124780861-b1687f9a13e5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f841d43a63c085e930aa5b6b33e89a9f&auto=format&fit=crop&w=1385&q=80"
+            alt=""
+          />
+          <div className="text">
+            <h3>PROJECT 1</h3>
+            <p>Short Description</p>
+          </div>
+          <div
+            className="button"
+            onClick={() =>
+              openModal(
+                1,
+                "https://images.unsplash.com/photo-1508124780861-b1687f9a13e5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f841d43a63c085e930aa5b6b33e89a9f&auto=format&fit=crop&w=1385&q=80"
+              )
+            }
+          >
+            Learn More
+          </div>
         </div>
-        <ul className="row portfolio-item">
-          {/* Repeat the following code block for each portfolio item */}
-          <li className="mix dev col-xl-3 col-md-4 col-12 col-sm-6 pd">
-            <img
-              src="https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-              alt="Image description"
-            />
-            <div className="portfolio-overlay">
-              <div className="overlay-content">
-                <p className="category">Project Name</p>
-                <a href="#" title="View Project" target="_blank">
-                  <div className="magnify-icon">
-                    <p>
-                      <span>
-                        <i className="fa fa-link" aria-hidden="true"></i>
-                      </span>
-                    </p>
-                  </div>
-                </a>
-                <a
-                  data-fancybox="item"
-                  title="click to zoom-in"
-                  href="https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                >
-                  <div className="magnify-icon">
-                    <p>
-                      <span>
-                        <i className="fa fa-search" aria-hidden="true"></i>
-                      </span>
-                    </p>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </li>
-          {/* Repeat the code block above for other portfolio items */}
-        </ul>
+        <div className="item" id="3">
+          <img
+            src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/002/438/793/datas/medium.jpg"
+            alt=""
+          />
+          <div className="text">
+            <h3>PROJECT 1</h3>
+            <p>Short Description</p>
+          </div>
+          <div
+            className="button"
+            onClick={() =>
+              openModal(
+                1,
+                "https://images.unsplash.com/photo-1508124780861-b1687f9a13e5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f841d43a63c085e930aa5b6b33e89a9f&auto=format&fit=crop&w=1385&q=80"
+              )
+            }
+          >
+            Learn More
+          </div>
+        </div>
+        <div className="item" id="1">
+          <img
+            src="https://images.unsplash.com/photo-1508124780861-b1687f9a13e5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f841d43a63c085e930aa5b6b33e89a9f&auto=format&fit=crop&w=1385&q=80"
+            alt=""
+          />
+          <div className="text">
+            <h3>PROJECT 1</h3>
+            <p>Short Description</p>
+          </div>
+          <div
+            className="button"
+            onClick={() =>
+              openModal(
+                1,
+                "https://images.unsplash.com/photo-1508124780861-b1687f9a13e5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f841d43a63c085e930aa5b6b33e89a9f&auto=format&fit=crop&w=1385&q=80"
+              )
+            }
+          >
+            Learn More
+          </div>
+        </div>
+
+        {/* Repeat the above structure for other projects */}
       </div>
+
+      {/* Modal */}
+      {modalVisible && (
+        <div id="preview" className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={closeModal}>
+              &times;
+            </span>
+            <img id="img" src={modalContent.img} alt="" />
+            <div id="details">
+              <h3 id="title">{modalContent.title}</h3>
+              <p id="info">{modalContent.info}</p>
+              <div
+                className="button"
+                id="live"
+                onClick={() => window.open(modalContent.link, "_blank")}
+              >
+                View
+              </div>
+              <i
+                className="fab fa-github-square"
+                id="github"
+                onClick={() => window.open(modalContent.github, "_blank")}
+              ></i>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
-}
+};
 
 export default ProjectSection;
