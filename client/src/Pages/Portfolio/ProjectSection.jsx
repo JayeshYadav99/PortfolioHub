@@ -39,7 +39,7 @@ const ProjectSection = () => {
               <p>{project.description}</p>
             </div>
             <div
-              className="button"
+              className="button text-white"
               onClick={() => openProjectLink(project.link)}
             >
               Learn More
