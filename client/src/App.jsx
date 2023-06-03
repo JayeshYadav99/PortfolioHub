@@ -6,14 +6,10 @@ import Home from "./Pages/Home";
 // import "../style/App.css";
 import Navbar from "./Pages/Navbar";
 import Hero from "./Pages/Hero";
-import Footer2 from "./Pages/Footer2";
+import Footer from "./Pages/Footer";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import CodeHome from "./Pages/CodeHome";
-
-
-
-
+import PortfolioHubHome from "./Pages/PortfolioHubHome";
 
 import Form from "./Pages/Form";
 import Auth from "./Pages/Auth";
@@ -25,17 +21,14 @@ const App = () => {
           <Navbar />
 
           <Routes>
-            <Route exact path="/" element={<CodeHome />}></Route>
+            <Route exact path="/" element={<PortfolioHubHome />}></Route>
 
-           
             <Route exact path="/Form" element={<Form />}></Route>
-           
+
             <Route exact path="/AUth" element={<Auth />}></Route>
-          
-          
           </Routes>
 
-          <Footer2 />
+          <Footer />
         </>
       </div>
     </div>
