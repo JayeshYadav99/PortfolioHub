@@ -1,0 +1,36 @@
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+  padding: 10px;
+}
+
+.inputBar {
+  all: unset;
+  width: calc(100% - 80px);
+  height: 40px;
+  border-radius: 10px;
+  padding: 0 20px;
+  background-color: rgba(219, 226, 239, 0.5);
+  margin: 10px;
+}
+
+.inputBar:focus {
+  margin: 10px;
+  border: 2px solid #80808070 !important;
+}
+.searchBtn {
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: #3b82f6;
+  color: #ffffff;
+  font-weight: 700;
+  border-radius: 0.25rem;
+}
+
+.searchBtn:hover {
+  background-color: #1d4ed8;
+}
