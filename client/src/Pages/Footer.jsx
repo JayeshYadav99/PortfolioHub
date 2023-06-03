@@ -6,7 +6,11 @@ const Footer2 = () => {
       <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
         <div class="sm:flex sm:items-center sm:justify-between">
           <a href="#" class="flex items-center mb-4 sm:mb-0">
-            <img src="Icon.jpeg" class="h-8 mr-3" alt="Contentify Logo" />
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/3476/3476457.png"
+              class="h-8 mr-3"
+              alt="Contentify Logo"
+            />
             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
               PortfolioHub
             </span>
@@ -41,7 +45,7 @@ const Footer2 = () => {
             href="https://github.com/Nishitbaria/Contentify"
             class="hover:underline"
           >
-            Contentify
+            ProfileHub
           </a>
           . All Rights Reserved.
         </span>
