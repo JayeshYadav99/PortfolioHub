@@ -11,7 +11,7 @@ const Navbar = () => {
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <a href="" className="flex items-center">
             <img
-              src="codehub-logo.png"
+              src="portfoliohub-logo.png"
               className="h-8 mr-3"
               alt="Flowbite Logo"
             />

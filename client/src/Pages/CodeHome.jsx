@@ -9,7 +9,7 @@ export default function EduHome() {
           <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
             <div className="mr-auto place-self-center lg:col-span-7">
               <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
-                Welcome to CodeHub
+              Welcome to PortfolioHub
               </h1>
               <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400"></p>
               <Link
@@ -32,7 +32,7 @@ export default function EduHome() {
               </Link>
             </div>
             <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
-              <img src="codehub-logo.png" alt="mockup" />
+              <img src="portfoliohub-logo.png" alt="mockup" />
             </div>
           </div>
         </div>
@@ -42,10 +42,10 @@ export default function EduHome() {
           <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
             <div className="max-w-screen-md mb-8 lg:mb-16">
               <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
-                Campus CodeHub - Simplifying Student Development
+              PortfolioHub- Personal Portfolio Enhancement Platform
               </h2>
               <p className="text-gray-500 sm:text-xl dark:text-gray-400">
-                Campus CodeHub is an all-in-one platform designed to simplify the development process for college students and provide them with a fun and engaging coding experience.
+                PortfolioHub is a platform designed to enhance personal portfolios and assist individuals in improving their own profiles. It provides a user-friendly interface with a range of templates to simplify the process of building impressive portfolio websites. Whether you're a seasoned professional or a beginner, Portfolify offers tools and resources to showcase your skills and make a meaningful impact.
               </p>
             </div>
             <div className="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
