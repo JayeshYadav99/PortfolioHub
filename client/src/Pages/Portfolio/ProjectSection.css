@@ -44,7 +44,7 @@ h1 {
 
 .item:hover {
   cursor: pointer;
-  border: 2px solid black;
+  border: 2px solid #01a2ac;
 }
 
 .item * {
@@ -71,7 +71,7 @@ img {
 }
 
 .text h3 {
-  color: black;
+  color: white;
 }
 
 .item:hover .text {
