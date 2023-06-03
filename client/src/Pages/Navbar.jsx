@@ -1,21 +1,19 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
-import { useGlobalContext } from './Context';
+import { useGlobalContext } from "./Context";
 const Navbar = () => {
   const { loginWithRedirect } = useAuth0();
   const { logout } = useAuth0();
   const { user, isAuthenticated, isLoading } = useAuth0();
 
-
-  
   return (
     <div>
       <nav className="bg-white border-gray-200 dark:bg-gray-900">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <a href="" className="flex items-center">
             <img
-              src="portfoliohub-logo.png"
+              src="https://cdn-icons-png.flaticon.com/512/3476/3476457.png"
               className="h-8 mr-3"
               alt="Flowbite Logo"
             />
