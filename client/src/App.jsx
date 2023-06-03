@@ -16,6 +16,7 @@ import Auth from "./Pages/Auth";
 import ProjectSection from "./Pages/Portfolio/ProjectSection";
 import PortfolioDashboard from "./Pages/Portfolio/PortFolioDashboard";
 import Contect from "./Pages/Portfolio/Contect";
+import About from "./Pages/Portfolio/About";
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
             <Route exact path="/AUth" element={<Auth />}></Route>
             <Route exact path="/Portfolio" element={<Profoliotemp />}></Route>
             <Route exact path="/Steps" element={<Steps />}></Route>
+            <Route exact path="/About" element={<About />}></Route>
             <Route
               exact
               path="/ProjectSection"

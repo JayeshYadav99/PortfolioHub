@@ -73,7 +73,7 @@ const ProjectSection = () => {
       <div className="container">
         <div className="item" id="1">
           <img
-            src="https://images.unsplash.com/photo-1508124780861-b1687f9a13e5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f841d43a63c085e930aa5b6b33e89a9f&auto=format&fit=crop&w=1385&q=80"
+            src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/438/782/datas/medium.png"
             alt=""
           />
           <div className="text">
@@ -94,7 +94,7 @@ const ProjectSection = () => {
         </div>
         <div className="item" id="2">
           <img
-            src="https://images.unsplash.com/photo-1508124780861-b1687f9a13e5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f841d43a63c085e930aa5b6b33e89a9f&auto=format&fit=crop&w=1385&q=80"
+            src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/002/490/716/datas/medium.gif"
             alt=""
           />
           <div className="text">
@@ -136,7 +136,7 @@ const ProjectSection = () => {
         </div>
         <div className="item" id="1">
           <img
-            src="https://images.unsplash.com/photo-1508124780861-b1687f9a13e5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f841d43a63c085e930aa5b6b33e89a9f&auto=format&fit=crop&w=1385&q=80"
+            src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/473/140/datas/medium.jpeg"
             alt=""
           />
           <div className="text">
