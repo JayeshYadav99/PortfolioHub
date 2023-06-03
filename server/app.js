@@ -186,7 +186,21 @@ app.get('/portfolio/:userId', (req, res) => {
       });
   });
   
-
+  app.post('/publication/:userId', (req, res) => {
+    const userId = req.params.userId;
+    
+  console.log(req.body);
+    User.findOneAndUpdate(
+      { userId },
+      { $push: { publications: req.body } }
+    )
+      .then(() => {
+        res.json({ message: 'Publication added successfully' });
+      })
+      .catch((error) => {
+        res.status(500).json({ error: 'Failed to add publication' });
+      });
+  });
 
       app.post("/portfolio", (req, res) => {
         const portfolioData = req.body;
