@@ -65,7 +65,7 @@ const PortfolioDashboard = ({ data }) => {
       {/* Experience */}
       {experiences.length > 0 && (
         <div className="bg-white rounded shadow p-4 mb-4">
-          <h2 className="text-xl font-bold mb-2 text-white">Experience</h2>
+          <h2 className="text-xl font-bold mb-2 text-black">Experience</h2>
           {experiences.map((exp, index) => (
             <div key={index} className="mb-2">
               <h3 className="font-bold">{exp.position}</h3>
@@ -79,7 +79,7 @@ const PortfolioDashboard = ({ data }) => {
       {/* Languages */}
 
       <div className="bg-white rounded shadow p-4 mb-4">
-        <h2 className="text-xl font-bold mb-2 text-white">Languages</h2>
+        <h2 className="text-xl font-bold mb-2 text-black">Languages</h2>
         <ul className="list-disc pl-4">
           {languages.map((lang, index) => (
             <li key={index}>{lang}</li>
@@ -89,7 +89,7 @@ const PortfolioDashboard = ({ data }) => {
       {/* Publications */}
       {publications.length > 0 && (
         <div className="bg-white rounded shadow p-4 mb-4">
-          <h2 className="text-xl font-bold mb-2 text-white">Publications</h2>
+          <h2 className="text-xl font-bold mb-2 text-black">Publications</h2>
           {publications.map((publication, index) => (
             <div key={index} className="mb-2">
               <h3 className="font-bold">{publication.position}</h3>
@@ -103,7 +103,7 @@ const PortfolioDashboard = ({ data }) => {
       {/* Education */}
       {education.length > 0 && (
         <div className="bg-white rounded shadow p-4 mb-4">
-          <h2 className="text-xl font-bold mb-2 text-white">Education</h2>
+          <h2 className="text-xl font-bold mb-2 text-black">Education</h2>
           {education.map((edu, index) => (
             <div key={index} className="mb-2">
               <h3 className="font-bold">{edu.position}</h3>
@@ -119,7 +119,7 @@ const PortfolioDashboard = ({ data }) => {
       {/* Certificates */}
       {certificates.length > 0 && (
         <div className="bg-white rounded shadow p-4 mb-4">
-          <h2 className="text-xl font-bold mb-2 text-white">Certificates</h2>
+          <h2 className="text-xl font-bold mb-2 text-black">Certificates</h2>
           {certificates.map((certificate, index) => (
             <div key={index} className="mb-2">
               <h3 className="font-bold">{certificate.position}</h3>
@@ -132,7 +132,7 @@ const PortfolioDashboard = ({ data }) => {
       {/* Volunteer */}
       {volunteer.length > 0 && (
         <div className="bg-white rounded shadow p-4 mb-4">
-          <h2 className="text-xl font-bold mb-2 text-white">
+          <h2 className="text-xl font-bold mb-2 text-black">
             Volunteer Experience
           </h2>
           {volunteer.map((exp, index) => (
@@ -148,7 +148,7 @@ const PortfolioDashboard = ({ data }) => {
       {/* Awards */}
       {awards.length > 0 && (
         <div className="bg-white rounded shadow p-4 mb-4">
-          <h2 className="text-xl font-bold mb-2 text-white">Awards</h2>
+          <h2 className="text-xl font-bold mb-2 text-black">Awards</h2>
           {awards.map((award, index) => (
             <div key={index} className="mb-2">
               <h3 className="font-bold">{award.position}</h3>
