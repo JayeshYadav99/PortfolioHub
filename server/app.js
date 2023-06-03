@@ -1,35 +1,32 @@
-const express = require('express');
+const express = require("express");
 
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 const app = express();
-const cors = require('cors');
-const bodyParser = require('body-parser');
+const cors = require("cors");
+const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const axios =require('axios');
-require('dotenv').config();
+const axios = require("axios");
+require("dotenv").config();
 // Route to generate the RSS feed
-app.use(express.static('/public'));
+app.use(express.static("/public"));
 app.use(cors());
 
 const dbOptions = {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  
-  };
-  
-  // Connect to MongoDB
-  mongoose
-    .connect(process.env.MONGO_URI, dbOptions)
-    .then(() => {
-      console.log('Connected to MongoDB');
-    })
-    .catch((error) => {
-      console.error('Error connecting to MongoDB:', error);
-    });
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+};
 
-
+// Connect to MongoDB
+mongoose
+  .connect(process.env.MONGO_URI, dbOptions)
+  .then(() => {
+    console.log("Connected to MongoDB");
+  })
+  .catch((error) => {
+    console.error("Error connecting to MongoDB:", error);
+  });
 
 const experienceSchema = new mongoose.Schema({
   position: {
@@ -37,6 +34,10 @@ const experienceSchema = new mongoose.Schema({
     required: false,
   },
   company: {
+    type: String,
+    required: false,
+  },
+  Experience: {
     type: String,
     required: false,
   },
@@ -138,7 +139,14 @@ const userSchema = new mongoose.Schema({
   userId: {
     type: String,
     required: false,
-    
+  },
+  Name: {
+    type: String,
+    required: false,
+  },
+  Introduction: {
+    type: String,
+    default: "",
   },
   experiences: [experienceSchema],
   publications: [publicationSchema],
@@ -160,64 +168,110 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-const User = mongoose.model('User', userSchema);
-const Experience = mongoose.model('Experience', experienceSchema);
-const Publication = mongoose.model('Publication', publicationSchema);
-const Education = mongoose.model('Education', educationSchema);
-const Certificate = mongoose.model('Certificate', certificateSchema);
-const Volunteer = mongoose.model('Volunteer', volunteerSchema);
-const Award = mongoose.model('Award', awardSchema);
+const User = mongoose.model("User", userSchema);
+const Experience = mongoose.model("Experience", experienceSchema);
+const Publication = mongoose.model("Publication", publicationSchema);
+const Education = mongoose.model("Education", educationSchema);
+const Certificate = mongoose.model("Certificate", certificateSchema);
+const Volunteer = mongoose.model("Volunteer", volunteerSchema);
+const Award = mongoose.model("Award", awardSchema);
 
+app.get("/portfolio/:userId", (req, res) => {
+  const userId = req.params.userId;
 
+  User.findOne({ userId })
+    .then((user) => {
+      if (!user) {
+        return res.status(404).json({ error: "User not found" });
+      }
 
-app.get('/portfolio/:userId', (req, res) => {
-    const userId = req.params.userId;
-  
-    User.findOne({ userId })
-      .then((user) => {
-        if (!user) {
-          return res.status(404).json({ error: 'User not found' });
-        }
-  
-        res.json(user);
-      })
-      .catch((error) => {
-        res.status(500).json({ error: 'Failed to retrieve user data' });
-      });
-  });
-  
-  app.post('/publication/:userId', (req, res) => {
-    const userId = req.params.userId;
-    
+      res.json(user);
+    })
+    .catch((error) => {
+      res.status(500).json({ error: "Failed to retrieve user data" });
+    });
+});
+app.post("/experience/:userId", (req, res) => {
+  const userId = req.params.userId;
+
   console.log(req.body);
-    User.findOneAndUpdate(
-      { userId },
-      { $push: { publications: req.body } }
-    )
-      .then(() => {
-        res.json({ message: 'Publication added successfully' });
-      })
-      .catch((error) => {
-        res.status(500).json({ error: 'Failed to add publication' });
-      });
-  });
+  User.findOneAndUpdate({ userId }, { $push: { experiences: req.body } })
+    .then(() => {
+      res.json({ message: "Experience added successfully" });
+    })
+    .catch((error) => {
+      res.status(500).json({ error: "Failed to add experience" });
+    });
+});
+app.put("/portfolio/Name/:userId", (req, res) => {
+  const userId = req.params.userId;
+  const { Name} = req.body;
 
-      app.post("/portfolio", (req, res) => {
-        const portfolioData = req.body;
-      
-        const portfolio = new User(portfolioData);
-      
-        portfolio
-          .save()
-          .then(() => {
-            res.json({ message: "Portfolio information saved successfully" });
-          })
-          .catch((error) => {
-            res.status(500).json({ error: "Failed to save portfolio information" });
-          });
-      });
-      
+  User.findOneAndUpdate({ userId }, { Name })
+    .then(() => {
+      res.json({ message: "Name updated successfully" });
+    })
+    .catch((error) => {
+      res.status(500).json({ error: "Failed to update the name" });
+    });
+});
+app.put("/portfolio/Introduction/:userId", (req, res) => {
+  const userId = req.params.userId;
+  const { Introduction } = req.body;
+  console.clear();
+  console.log(Introduction);
+  User.findOneAndUpdate({ userId }, { Introduction })
+    .then(() => {
+      res.json({ message: "Introduction updated successfully" });
+    })
+    .catch((error) => {
+      res.status(500).json({ error: "Failed to update the name" });
+    });
+});
+app.post("/education/:userId", (req, res) => {
+  const userId = req.params.userId;
+
+  console.log(req.body);
+  User.findOneAndUpdate({ userId }, { $push: { education: req.body } })
+    .then(() => {
+      res.json({ message: "Education added successfully" });
+    })
+    .catch((error) => {
+      res.status(500).json({ error: "Failed to add Experience" });
+    });
+});
+
+
+
+app.post("/publication/:userId", (req, res) => {
+  const userId = req.params.userId;
+
+  console.log(req.body);
+  User.findOneAndUpdate({ userId }, { $push: { publications: req.body } })
+    .then(() => {
+      res.json({ message: "Publication added successfully" });
+    })
+    .catch((error) => {
+      res.status(500).json({ error: "Failed to add publication" });
+    });
+});
+
+app.post("/portfolio", (req, res) => {
+  const portfolioData = req.body;
+
+  const portfolio = new User(portfolioData);
+
+  portfolio
+    .save()
+    .then(() => {
+      res.json({ message: "Portfolio information saved successfully" });
+    })
+    .catch((error) => {
+      res.status(500).json({ error: "Failed to save portfolio information" });
+    });
+});
+
 // Start the server
 app.listen(3000, () => {
-    console.log('Server started on port 3000');
+  console.log("Server started on port 3000");
 });
