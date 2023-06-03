@@ -66,8 +66,8 @@ const PortfolioDashboard = ({ data }) => {
           {experiences.map((exp, index) => (
             <div key={index} className="mb-2">
               <h3 className="font-bold">{exp.position}</h3>
-              <p className="text-gray-600">{exp.company}</p>
-              <p className="text-gray-600">{exp.duration}</p>
+              <p className="text-blue-600">{exp.company}</p>
+              <p className="text-blue-600">{exp.duration}</p>
             </div>
           ))}
         </div>
