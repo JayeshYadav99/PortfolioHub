@@ -68,7 +68,7 @@ const PageSection = () => {
               <a
                 className="text-blue-500 hover:underline"
                 aria-label="Go to Contact Page"
-                href="/contact"
+                href="/Contect"
               >
                 Contact Me
               </a>

@@ -15,6 +15,8 @@ import Form from "./Pages/Form";
 import Auth from "./Pages/Auth";
 import ProjectSection from "./Pages/Portfolio/ProjectSection";
 import PortfolioDashboard from "./Pages/Portfolio/PortFolioDashboard";
+import Contect from "./Pages/Portfolio/Contect";
+
 const App = () => {
   return (
     <div>
@@ -38,6 +40,7 @@ const App = () => {
               path="/PortfolioDashboard"
               element={<PortfolioDashboard />}
             ></Route>
+            <Route exact path="/Contect" element={<Contect />}></Route>
           </Routes>
 
           <Footer />
