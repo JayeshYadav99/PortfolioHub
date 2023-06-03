@@ -4,20 +4,14 @@ import "./PageSection.css"; // Import the CSS file for styling
 const PageSection = () => {
   return (
     <div className="relative">
-      <div className="background">
-        <ul>
-          <li className="li1"></li>
-          <li className="li2"></li>
-          <li className="li3"></li>
-          <li className="li4"></li>
-          <li className="li5"></li>
-          <li className="li6"></li>
-          <li className="li7"></li>
-          <li className="li8"></li>
-          <li className="li9"></li>
-        </ul>
-      </div>
-      <div className="bg-gray-900 text-white p-8 relative z-10">
+      <div className="bg-gray-900 text-white p-8 relative z-10 flex flex-row">
+        <div className="flex items-center">
+          <img
+            src="https://avatars.githubusercontent.com/u/107855172?v=4"
+            alt="Nishit's profile picture"
+            className="w-21 h-21 mb-4"
+          />
+        </div>
         <div className="max-w-2xl mx-auto">
           <div className="mb-8">
             <h2 className="text-3xl font-bold text-blue-500 fade-in">
@@ -25,8 +19,6 @@ const PageSection = () => {
             </h2>
           </div>
           <div className="mb-4">
-            {" "}
-            {/* Added margin here */}
             <p className="opacity-100 transform-none typing-animation">
               Your friendly neighborhood frontend developer, UX architect, and
               JavaScript engineer. I spend my days (and often nights) painting
@@ -68,7 +60,7 @@ const PageSection = () => {
               <a
                 className="text-blue-500 hover:underline"
                 aria-label="Go to Contact Page"
-                href="/Contect"
+                href="/contact"
               >
                 Contact Me
               </a>
