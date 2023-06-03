@@ -14,6 +14,7 @@ import Steps from "./Pages/Portfolio/Steps";
 import Form from "./Pages/Form";
 import Auth from "./Pages/Auth";
 import ProjectSection from "./Pages/Portfolio/ProjectSection";
+import PortfolioDashboard from "./Pages/Portfolio/PortFolioDashboard";
 const App = () => {
   return (
     <div>
@@ -31,6 +32,11 @@ const App = () => {
               exact
               path="/ProjectSection"
               element={<ProjectSection />}
+            ></Route>
+            <Route
+              exact
+              path="/PortfolioDashboard"
+              element={<PortfolioDashboard />}
             ></Route>
           </Routes>
 

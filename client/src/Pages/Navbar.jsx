@@ -6,7 +6,7 @@ const Navbar = () => {
   const { loginWithRedirect } = useAuth0();
   const { logout } = useAuth0();
   const { user, isAuthenticated, isLoading } = useAuth0();
-
+console.log(user);
   return (
     <div>
       <nav className="bg-white border-gray-200 dark:bg-gray-900">

@@ -7,9 +7,9 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { useAuth0 } from '@auth0/auth0-react';
 import { useGlobalContext } from './Context';
-
+import PortfolioDashboard from "./Portfolio/PortFolioDashboard";
 const Auth = () => {
-    console.log(import.meta.env.VITE_AUTH0_MANAGEMENT_API_KEY);
+    // console.log(import.meta.env.VITE_AUTH0_MANAGEMENT_API_KEY);
   const colors = ['bg-purple-500', 'bg-blue-500', 'bg-green-500', 'bg-yellow-500', 'bg-red-500'];
 const [repoColors, setRepoColors] = useState(colors);
   const [avatarURL, setAvatarURL] = useState();
@@ -25,10 +25,11 @@ console.log(useGlobalContext);
 
   
   const fetchUserInfo = async (ACCESS_TOKEN) => {
+    const accessToken = await getAccessTokenSilently();
     try {
       const response = await axios.get('https://dev-fkzyzzay6f6jrars.us.auth0.com/userinfo', {
         headers: {
-          'Authorization': `Bearer ${ACCESS_TOKEN}`,
+          'Authorization': `Bearer ${accessToken}`,
        
         },
       });
@@ -89,7 +90,7 @@ console.log(userId);
   if (!isLoading && isAuthenticated) {
     try {
       const accessToken = await getAccessTokenSilently();
-      //console.log(accessToken);
+      console.log(accessToken);
       // Use the accessToken for API calls or other purposes
    return accessToken;
     } catch (error) {
@@ -106,7 +107,7 @@ async function fetchRepoData(username) {
   try {
     const response = await fetch(`https://api.github.com/users/${username}/repos`);
     const data = await response.json();
-    //console.log(data);
+    console.log(data[0].owner.login);
     setRepoData(data);
    
     setRepoLanguageData(reposWithLanguages);
@@ -171,6 +172,14 @@ const handleStart = async (repo) => {
 
 
 
+  const [showDashboard, setShowDashboard] = useState(false);
+
+  const handleNext = () => {
+  
+    setShowDashboard(true);
+  };
+
+  
 
 
 
@@ -188,69 +197,77 @@ useEffect(() => {
   
 }, [])
 
-
 return (
-<div className="w-full min-h-screen flex flex-col justify-center items-center p-8">
-  <div className="mt-8">
-    <Card className="w-64 bg-gray-900">
-      <Card.Img variant="top" src={avatarURL} className="w-32 h-32 object-cover mx-auto mt-6 rounded-full p-2" />
-      <Card.Body className="p-6">
-        <div className="flex flex-col items-center">
-          <Card.Title className="font-bold text-xl text-white mb-2">Welcome, {githubUsername}!</Card.Title>
-          <Card.Text className="text-gray-400">
-            Thank you for exploring our website. You can get anything from everything here.
-          </Card.Text>
-          <Button
-            variant="primary"
-            onClick={() => setShowRepos(!showRepos)}
-            className="mt-4 bg-purple-500 hover:bg-purple-700 transition-colors duration-300 text-lg py-2 px-4 rounded-lg"
-          >
-            {showRepos ? "Hide Repos" : "Show Repos"}
-          </Button>
+  <div className="w-full min-h-screen flex flex-col justify-center items-center p-8">
+    {showDashboard ? (
+      <PortfolioDashboard data={repoData} />
+    ) : (
+      <>
+        <div className="mt-8">
+          <Card className="w-64 bg-gray-900">
+            <Card.Img variant="top" src={avatarURL} className="w-32 h-32 object-cover mx-auto mt-6 rounded-full p-2" />
+            <Card.Body className="p-6">
+              <div className="flex flex-col items-center">
+                <Card.Title className="font-bold text-xl text-white mb-2">Welcome, {githubUsername}!</Card.Title>
+                <Card.Text className="text-gray-400">
+                  Thank you for exploring our website. You can get anything from everything here.
+                </Card.Text>
+                <Button
+                  variant="primary"
+                  onClick={() => setShowRepos(!showRepos)}
+                  className="mt-4 bg-purple-500 hover:bg-purple-700 transition-colors duration-300 text-lg py-2 px-4 rounded-lg"
+                >
+                  {showRepos ? "Hide Repos" : "Show Repos"}
+                </Button>
+              </div>
+            </Card.Body>
+          </Card>
         </div>
-      </Card.Body>
-    </Card>
-  </div>
-  {showRepos && (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-8">
-      {repoData.map((repo, index) => {
-      return(
-        <Card
-          key={repo.id}
-          className={`flex flex-col justify-between items-center ${repoColors[2]} text-white hover:bg-pink-500 transition duration-300`}
-        >
-          <Card.Img variant="top" src="github.png" className="w-32 h-32 object-cover mt-4" />
+        {showRepos && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-8">
+            {repoData.map((repo, index) => {
+              return (
+                <Card
+                  key={repo.id}
+                  className={`flex flex-col justify-between items-center ${repoColors[2]} text-white hover:bg-pink-500 transition duration-300`}
+                >
+                  <Card.Img variant="top" src="github.png" className="w-32 h-32 object-cover mt-4" />
 
-          <Card.Body className="p-6 flex flex-col justify-between items-center">
-            <div className="flex flex-col items-center">
-              <Card.Title className="font-bold text-lg mb-2">{repo.name}</Card.Title>
-              <Card.Text className="text-gray-200 overflow-hidden text-justify">
-                {repo.description}
-              </Card.Text>
-            </div>
+                  <Card.Body className="p-6 flex flex-col justify-between items-center">
+                    <div className="flex flex-col items-center">
+                      <Card.Title className="font-bold text-lg mb-2">{repo.name}</Card.Title>
+                      <Card.Text className="text-gray-200 overflow-hidden text-justify">
+                        {repo.description}
+                      </Card.Text>
+                    </div>
 
-            <div className="flex items-center justify-center w-full mt-4">
-              <Button variant={`primary bg-red-500 hover:bg-white hover:text-black`} href={repo.html_url} target="_blank" className="mt-2 flex items-center">
-                <BsEyeFill className="mr-2" /> View Repository
-              </Button>
-              <Button variant={`secondary bg-black hover:bg-white hover:text-black`} className="mt-2 ml-4 flex items-center"  onClick={() => handleStart(repo)}>
-                <BsPlayFill className="mr-2" /> Start a Codespace
-              </Button>
-            </div>
-            <div className="mt-6 w-40">
-           
+                    <div className="flex items-center justify-center w-full mt-4">
+                      <Button variant={`primary bg-red-500 hover:bg-white hover:text-black`} href={repo.html_url} target="_blank" className="mt-2 flex items-center">
+                        <BsEyeFill className="mr-2" /> View Repository
+                      </Button>
+                      <Button variant={`secondary bg-black hover:bg-white hover:text-black`} className="mt-2 ml-4 flex items-center" onClick={() => handleStart(repo)}>
+                        <BsPlayFill className="mr-2" /> Start a Codespace
+                      </Button>
+                    </div>
+                    <div className="mt-6 w-40"></div>
+                  </Card.Body>
+                </Card>
+              );
+            })}
           </div>
-
-          </Card.Body>
-        </Card>
-        
-        )
-  })}
-  
-    </div>
-  )}
-</div>
+        )}
+        <Button
+          variant="primary"
+          onClick={handleNext}
+          className="mt-4 bg-purple-500 hover:bg-purple-700 transition-colors duration-300 text-lg py-2 px-4 rounded-lg"
+        >
+          Next
+        </Button>
+      </>
+    )}
+  </div>
 );
+
 
         }
 
