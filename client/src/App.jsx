@@ -13,6 +13,7 @@ import PortfolioHubHome from "./Pages/PortfolioHubHome";
 
 import Form from "./Pages/Form";
 import Auth from "./Pages/Auth";
+import PortfolioDashboard from "./Pages/Portfolio/PortFolioDashboard";
 const App = () => {
   return (
     <div>
@@ -27,6 +28,7 @@ const App = () => {
 
             <Route exact path="/AUth" element={<Auth />}></Route>
             <Route exact path="/Portfolio" element={<Profoliotemp />}></Route>
+            <Route exact path="/PortfolioDashboard" element={<PortfolioDashboard />}></Route>
           </Routes>
 
           <Footer />
