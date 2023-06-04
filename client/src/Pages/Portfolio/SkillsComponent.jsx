@@ -1,5 +1,6 @@
 import React from "react";
 import "./SkillsComponent.css";
+
 const SkillsComponent = () => {
   return (
     <div>
@@ -7,6 +8,18 @@ const SkillsComponent = () => {
         href="https://fonts.googleapis.com/icon?family=Material+Icons"
         rel="stylesheet"
       />
+      {/* MY Experience section */}
+      <h1
+        style={{
+          color: "white",
+          fontWeight: "bold",
+          textAlign: "center",
+          marginTop: "20px",
+          marginBottom: "10px",
+        }}
+      >
+        MY Experience
+      </h1>
 
       {/* about */}
       <div className="about">
