@@ -249,6 +249,19 @@ app.post("/experience/:userId", (req, res) => {
     });
 });
 
+app.post("/education/:userId", (req, res) => {
+  const userId = req.params.userId;
+
+  console.log(req.body);
+  User.findOneAndUpdate({ userId }, { $push: { education: req.body } })
+    .then(() => {
+      res.json({ message: "Education added successfully" });
+    })
+    .catch((error) => {
+      res.status(500).json({ error: "Failed to add education" });
+    });
+});
+
 app.post("/language/:userId", (req, res) => {
   const userId = req.params.userId;
   const languages = req.body.languages;

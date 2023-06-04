@@ -4,7 +4,7 @@ import ExperienceForm from "./Forms/ExperienceForm";
 import NameForm from "./Forms/NameForm";
 import IntroductionForm from "./Forms/IntroductionForm";
 import LanguageForm from "./Forms/LanguageForm";
-
+import EducationForm from "./Forms/EducationForm"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -13,6 +13,7 @@ const PortfolioDashboard = ({ data }) => {
   const [userData, setUserData] = useState(null);
   const [showExperienceForm, setShowExperienceForm] = useState(false);
   const [showLanguageForm, setShowLanguageForm] = useState(false);
+  const [showEducationForm, setShowEducationForm] = useState(false);
 
   const [showNameForm, setShowNameForm] = useState(false);
   const [showIntroductionForm, setShowIntroductionForm] = useState(false);
@@ -54,6 +55,10 @@ const PortfolioDashboard = ({ data }) => {
     // alert(showLanguageForm)
     setShowLanguageForm(!showLanguageForm);
   };
+  const handleEditEducation = () => {
+    // alert(showLanguageForm)
+    setShowEducationForm(!showEducationForm);
+  };
 
   const {
     Name,
@@ -70,8 +75,8 @@ const PortfolioDashboard = ({ data }) => {
     awards,
     Introduction,
   } = userData;
-  console.clear();
-  console.log(data);
+  // console.clear();
+  // console.log(data);
   // console.log(dfd);
 
   return (
@@ -145,10 +150,10 @@ const PortfolioDashboard = ({ data }) => {
           <h2 className="text-xl font-bold mb-2 text-black">Experience</h2>
           {experiences.map((exp, index) => (
             <div key={index} className="mb-2">
-              <h3 className="font-bold">{exp.position}</h3>
-              <p className="text-blue-600">{exp.company}</p>
-              <p className="text-blue-600">{exp.duration}</p>
-              <p className="text-blue-600">{exp.Experience}</p>
+              <h3 className="font-bold text-xl">{exp.position}</h3>
+              <p className="text-blue-600 font-bold pl-1">{exp.company}</p>
+              <p className="text-blue-600 pl-4">{exp.duration}</p>
+              <p className="text-blue-600 pl-4">{exp.Experience}</p>
             </div>
           ))}
           <button
@@ -210,9 +215,20 @@ const PortfolioDashboard = ({ data }) => {
               <p className="text-gray-600">{`${edu.startDate} - ${edu.endDate}`}</p>
             </div>
           ))}
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+            onClick={handleEditEducation}
+          >
+            Add
+          </button>
         </div>
       )}
-
+      {showEducationForm && (
+        <EducationForm
+          userId={data[0].owner.id}
+          setShowEducationForm={setShowEducationForm}
+        />
+      )}
       {/* Certificates */}
       {certificates.length > 0 && (
         <div className="bg-white rounded shadow p-4 mb-4">

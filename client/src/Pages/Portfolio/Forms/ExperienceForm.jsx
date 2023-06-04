@@ -15,6 +15,16 @@ const FormInput = ({ type, value, onChange }) => (
   />
 );
 
+const FormTextArea= ({type,value, onChange}) => (
+  <textarea
+          value={value}
+          onChange={onChange}
+          rows={4}
+          cols={50}
+          className="block border rounded focus:outline-none focus:ring focus:border-blue-500 px-3 py-2"
+        />
+)
+
 const FormButton = ({ text }) => (
   <button type="submit" className="bg-blue-500 text-white py-2 px-4 mt-4">
     {text}
@@ -72,11 +82,16 @@ const ExperienceForm = ({ userId, setShowExperienceForm }) => {
       </div>
       <div className="mb-4">
         <FormLabel text="Experience:" />
-        <FormInput
+        {/* <FormInput
           type="text"
           value={experience}
           onChange={(e) => setExperience(e.target.value)}
-        />
+        /> */}
+        <FormTextArea 
+        type="text"
+          value={experience}
+          onChange={(e) => setExperience(e.target.value)}
+          />
       </div>
       <div className="mb-4">
         <FormLabel text="Start Date:" />
