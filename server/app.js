@@ -200,31 +200,26 @@ const userSchema = new mongoose.Schema({
           description: {
             type: String,
             required: false,
-
           },
-          imageURL:{
+          imageURL: {
             type: String,
             required: false,
-
-          }
-        }
-      ]
-    }
-  ]
+          },
+        },
+      ],
+    },
+  ],
 });
 
+const GithubUser = mongoose.model("GithubUser", githubSchema);
 
-
-const GithubUser = mongoose.model('GithubUser', githubSchema);
-
-
-const User = mongoose.model('User', userSchema);
-const Experience = mongoose.model('Experience', experienceSchema);
-const Publication = mongoose.model('Publication', publicationSchema);
-const Education = mongoose.model('Education', educationSchema);
-const Certificate = mongoose.model('Certificate', certificateSchema);
-const Volunteer = mongoose.model('Volunteer', volunteerSchema);
-const Award = mongoose.model('Award', awardSchema);
+const User = mongoose.model("User", userSchema);
+const Experience = mongoose.model("Experience", experienceSchema);
+const Publication = mongoose.model("Publication", publicationSchema);
+const Education = mongoose.model("Education", educationSchema);
+const Certificate = mongoose.model("Certificate", certificateSchema);
+const Volunteer = mongoose.model("Volunteer", volunteerSchema);
+const Award = mongoose.model("Award", awardSchema);
 
 app.get("/portfolio/:userId", (req, res) => {
   const userId = req.params.userId;
@@ -253,6 +248,23 @@ app.post("/experience/:userId", (req, res) => {
       res.status(500).json({ error: "Failed to add experience" });
     });
 });
+
+app.post("/language/:userId", (req, res) => {
+  const userId = req.params.userId;
+  const languages = req.body.languages;
+  console.log(req.body);
+  User.findOneAndUpdate(
+    { userId },
+    { $push: { languages: { $each: languages } } }
+  )
+    .then(() => {
+      res.json({ message: "Languages added successfully" });
+    })
+    .catch((error) => {
+      res.status(500).json({ error: "Failed to add languages" });
+    });
+});
+
 app.put("/portfolio/Name/:userId", (req, res) => {
   const userId = req.params.userId;
   const { Name } = req.body;
@@ -343,7 +355,6 @@ app.post("/github/:userId", (req, res) => {
       res.status(500).json({ error: "Failed to add github" });
     });
 });
-    
 
 // Start the server
 app.listen(3000, () => {
