@@ -43,7 +43,7 @@ export default function Profoliotemp() {
     {userData &&(<><PageSection Name={userData.Name} Introduction={userData.Introduction}  image={userData.github[0].picture}/>
     <About Experience={userData.experiences} />
     <ProjectSection/>
-    <Journey/>
+    <Journey />
     <Contect /></>)
     
 }

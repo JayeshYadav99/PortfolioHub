@@ -180,7 +180,8 @@ const handleStart = async (repo) => {
     console.log(repoData[0].owner);
     console.log(repoData);
     console.log(repoData[0].owner.id);
-    postData()
+    Signup();
+    postData();
     setShowDashboard(true);
   };
 
@@ -198,7 +199,41 @@ const handleStart = async (repo) => {
   };
   
 
-
+  const Signup = async () => {
+    try {
+      const data = {
+        userId: repoData[0].owner.id ,
+        Name: "",
+        Introduction: "",
+        experiences: [{}],
+        publications: [{}],
+        education: [{}],
+        certificates: [{}],
+        volunteer: [{}],
+        awards: [{}],
+        github: [{}],
+        languages: [],
+        interests: [],
+        references: [],
+        journeys: [
+          {
+            name: [""],
+            checkpoints: [
+              {
+                description: "",
+                imageURL: "",
+              },
+            ],
+          },
+        ],
+      };
+  
+      const response = await axios.post("http://localhost:3000/portfolio", data);
+      console.log("Response:", response.data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
 
 
