@@ -15,7 +15,7 @@ const PageSection = () => {
         <div className="max-w-2xl mx-auto">
           <div className="mb-8">
             <h2 className="text-3xl font-bold text-blue-500 fade-in">
-              I Am Nishit
+              I Am Jayesh Yadav
             </h2>
           </div>
           <div className="mb-4">

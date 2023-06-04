@@ -19,6 +19,7 @@ const [repoColors, setRepoColors] = useState(colors);
   const [showRepos, setShowRepos] = useState(false);
   const { user, isLoading, isAuthenticated ,getAccessTokenSilently} = useAuth0();
   const[githubtoken,SetgithubToken]=useState('');
+  const[githubuser,Setgithubuser]=useState({});
 console.log(useGlobalContext);
   const {saveUser} = useGlobalContext();
 
@@ -55,6 +56,7 @@ const userId = Myuser.sub;
 if(Myuser)
 {
   saveUser(Myuser);
+  Setgithubuser(Myuser);
 }
 
 // 5. Log the user ID
@@ -175,12 +177,26 @@ const handleStart = async (repo) => {
   const [showDashboard, setShowDashboard] = useState(false);
 
   const handleNext = () => {
-  
+    console.log(repoData[0].owner);
+    console.log(repoData);
+    console.log(repoData[0].owner.id);
+    postData()
     setShowDashboard(true);
   };
 
   
+  const postData = async () => {
+    try {
 
+      const url = `http://localhost:3000/github/${repoData[0].owner.id}`;
+      console.log(githubuser);
+      const response = await axios.post(url,githubuser);
+      console.log(response.data); // Handle the response data as needed
+    } catch (error) {
+      console.error("Error while making the API call:", error);
+    }
+  };
+  
 
 
 

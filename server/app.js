@@ -135,6 +135,28 @@ const awardSchema = new mongoose.Schema({
   },
 });
 
+const githubSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  nickname: {
+    type: String,
+    required: true
+  },
+  picture: {
+    type: String,
+    required: true
+  },
+  sub: {
+    type: String,
+    required: true
+  },
+  updated_at: {
+    type: String,
+    required: true
+  }
+});
 const userSchema = new mongoose.Schema({
   userId: {
     type: String,
@@ -154,6 +176,7 @@ const userSchema = new mongoose.Schema({
   certificates: [certificateSchema],
   volunteer: [volunteerSchema],
   awards: [awardSchema],
+  github:[githubSchema],
   languages: {
     type: [String],
     required: false,
@@ -166,8 +189,26 @@ const userSchema = new mongoose.Schema({
     type: [String],
     required: false,
   },
+  journeys:[
+    {
+      name: {
+        type: [String],
+        required: false,
+      },
+      checkpoints:[
+        {
+          description:{
+            type: String,
+            required: false,
+
+          }
+        }
+      ]
+    }
+  ]
 });
 
+<<<<<<< Updated upstream
 const User = mongoose.model("User", userSchema);
 const Experience = mongoose.model("Experience", experienceSchema);
 const Publication = mongoose.model("Publication", publicationSchema);
@@ -175,6 +216,20 @@ const Education = mongoose.model("Education", educationSchema);
 const Certificate = mongoose.model("Certificate", certificateSchema);
 const Volunteer = mongoose.model("Volunteer", volunteerSchema);
 const Award = mongoose.model("Award", awardSchema);
+=======
+
+
+const GithubUser = mongoose.model('GithubUser', githubSchema);
+
+
+const User = mongoose.model('User', userSchema);
+const Experience = mongoose.model('Experience', experienceSchema);
+const Publication = mongoose.model('Publication', publicationSchema);
+const Education = mongoose.model('Education', educationSchema);
+const Certificate = mongoose.model('Certificate', certificateSchema);
+const Volunteer = mongoose.model('Volunteer', volunteerSchema);
+const Award = mongoose.model('Award', awardSchema);
+>>>>>>> Stashed changes
 
 app.get("/portfolio/:userId", (req, res) => {
   const userId = req.params.userId;
@@ -195,6 +250,7 @@ app.post("/experience/:userId", (req, res) => {
   const userId = req.params.userId;
 
   console.log(req.body);
+<<<<<<< Updated upstream
   User.findOneAndUpdate({ userId }, { $push: { experiences: req.body } })
     .then(() => {
       res.json({ message: "Experience added successfully" });
@@ -270,6 +326,49 @@ app.post("/portfolio", (req, res) => {
       res.status(500).json({ error: "Failed to save portfolio information" });
     });
 });
+=======
+    User.findOneAndUpdate(
+      { userId },
+      { $push: { publications: req.body } }
+    )
+      .then(() => {
+        res.json({ message: 'Publication added successfully' });
+      })
+      .catch((error) => {
+        res.status(500).json({ error: 'Failed to add publication' });
+      });
+  });
+  app.post('/journey/:userId', (req, res) => {
+    const userId = req.params.userId;
+    
+  console.log(req.body);
+    User.findOneAndUpdate(
+      { userId },
+      { $push: { journeys: req.body } }
+    )
+      .then(() => {
+        res.json({ message: 'journey added successfully' });
+      })
+      .catch((error) => {
+        res.status(500).json({ error: 'Failed to add journey' });
+      });
+  });
+  app.post('/github/:userId', (req, res) => {
+    const userId = req.params.userId;
+    
+  console.log(req.body);
+    User.findOneAndUpdate(
+      { userId },
+      { $push: {github: req.body } }
+    )
+      .then(() => {
+        res.json({ message: 'github added successfully' });
+      })
+      .catch((error) => {
+        res.status(500).json({ error: 'Failed to add github' });
+      });
+  });
+>>>>>>> Stashed changes
 
 // Start the server
 app.listen(3000, () => {

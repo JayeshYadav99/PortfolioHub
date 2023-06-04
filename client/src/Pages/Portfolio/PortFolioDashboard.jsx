@@ -22,7 +22,15 @@ const PortfolioDashboard = ({ data }) => {
           `http://localhost:3000/portfolio/${userId}`
         );
         console.log(response.data);
-        setUserData(response.data);
+        if(response)
+        {
+          setUserData(response.data);
+        }
+        else
+        {
+          setUserData(" ");
+        }
+       
       } catch (error) {
         console.error("Failed to fetch user data:", error);
       }
