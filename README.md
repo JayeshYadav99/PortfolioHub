@@ -36,7 +36,13 @@ PortfolioHub is a dynamic web application built using the MERN stack that allows
 
 ## Deployment
 
+For Running Locally:
+-1.cd client
+-2.npm run dev
+-3.cd server
+-4.npm start
 The application is deployed and accessible at: [https://portfoliohubs.netlify.app/](https://portfoliohubs.netlify.app/)
+
 
 ## Contributing
 
