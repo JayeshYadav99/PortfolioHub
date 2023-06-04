@@ -38,14 +38,20 @@ export default function Profoliotemp() {
 
   return (
     <div>
-    {userData &&(<><PageSection Name={userData.Name} Introduction={userData.Introduction}  image={userData.github[0].picture}/>
-    <About Experience={userData.experiences} />
-    <ProjectSection/>
-    <Journey />
-    <Contect />
-    <Certification/></>)
-    
-}
-  </div>
+      {userData && (
+        <>
+          <PageSection
+            Name={userData.Name}
+            Introduction={userData.Introduction}
+            image={userData.github[0].picture}
+          />
+          <About Experience={userData.experiences} />
+          <ProjectSection />
+          <Journey />
+          <Contect />
+          <Certification />
+        </>
+      )}
+    </div>
   );
 }

@@ -173,7 +173,6 @@ const PortfolioDashboard = ({ data }) => {
 
       {/* Experience */}
 
-      {experiences.length > 0 && (
         <div className="bg-white rounded shadow p-4 mb-4">
           <h2 className="text-xl font-bold mb-2 text-black">Experience</h2>
           {experiences.map((exp, index) => (
@@ -191,7 +190,6 @@ const PortfolioDashboard = ({ data }) => {
             Add
           </button>
         </div>
-      )}
       {showExperienceForm && (
         <ExperienceForm
           userId={data[0].owner.id}
@@ -231,7 +229,6 @@ const PortfolioDashboard = ({ data }) => {
         </div>
       )} */}
       {/* Education */}
-      {education.length > 0 && (
         <div className="bg-white rounded shadow p-4 mb-4">
           <h2 className="text-xl font-bold mb-2 text-black">Education</h2>
           {education.map((edu, index) => (
@@ -250,7 +247,6 @@ const PortfolioDashboard = ({ data }) => {
             Add
           </button>
         </div>
-      )}
       {showEducationForm && (
         <EducationForm
           userId={data[0].owner.id}
@@ -258,7 +254,7 @@ const PortfolioDashboard = ({ data }) => {
         />
       )}
       {/* Certificates */}
-      {certificates.length > 0 && (
+ 
         <div className="bg-white rounded shadow p-4 mb-4">
           <h2 className="text-xl font-bold mb-2 text-black">Certificates</h2>
           {certificates.map((certificate, index) => (
@@ -280,7 +276,7 @@ const PortfolioDashboard = ({ data }) => {
             Add
           </button>
         </div>
-      )}
+
       {showCertificateForm && (
         <CertificateForm
           userId={data[0].owner.id}
