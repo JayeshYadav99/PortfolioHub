@@ -15,6 +15,7 @@ import Form from "./Pages/Form";
 import Auth from "./Pages/Auth";
 import ProjectSection from "./Pages/Portfolio/ProjectSection";
 import PortfolioDashboard from "./Pages/Portfolio/PortFolioDashboard";
+import PortFolio from "./Pages/Portfolio/Portfolio";
 import Contect from "./Pages/Portfolio/Contect";
 import About from "./Pages/Portfolio/About";
 import Journey from "./Pages/Portfolio/Journey"
@@ -36,6 +37,7 @@ const App = () => {
             <Route exact path="/About" element={<About />}></Route>
             <Route exact path="/Journey" element={<Journey />}></Route>
             <Route exact path="/JourneyHome" element={<JourneyHome />}></Route>
+            <Route path="/users/:id" element={<PortFolio/>} />
             <Route
               exact
               path="/ProjectSection"

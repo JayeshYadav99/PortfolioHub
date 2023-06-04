@@ -3,8 +3,9 @@ import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import Slideshow from "./Journey";
 
-const Journey = () => {
-  const [journeys, setJourneys] = useState([]);
+const Journey = ({journey}) => {
+    console.log(journey);
+  const [journeys, setJourneys] = useState(journey);
   const { user, isAuthenticated, isLoading } = useAuth0();
   const [Myuser, SetUser] = useState(null);
   const [isAddingJourney, setIsAddingJourney] = useState(false);
