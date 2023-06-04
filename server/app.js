@@ -200,22 +200,31 @@ const userSchema = new mongoose.Schema({
           description: {
             type: String,
             required: false,
+
           },
-        },
-      ],
-    },
-  ],
+          imageURL:{
+            type: String,
+            required: false,
+
+          }
+        }
+      ]
+    }
+  ]
 });
 
-const GithubUser = mongoose.model("GithubUser", githubSchema);
 
-const User = mongoose.model("User", userSchema);
-const Experience = mongoose.model("Experience", experienceSchema);
-const Publication = mongoose.model("Publication", publicationSchema);
-const Education = mongoose.model("Education", educationSchema);
-const Certificate = mongoose.model("Certificate", certificateSchema);
-const Volunteer = mongoose.model("Volunteer", volunteerSchema);
-const Award = mongoose.model("Award", awardSchema);
+
+const GithubUser = mongoose.model('GithubUser', githubSchema);
+
+
+const User = mongoose.model('User', userSchema);
+const Experience = mongoose.model('Experience', experienceSchema);
+const Publication = mongoose.model('Publication', publicationSchema);
+const Education = mongoose.model('Education', educationSchema);
+const Certificate = mongoose.model('Certificate', certificateSchema);
+const Volunteer = mongoose.model('Volunteer', volunteerSchema);
+const Award = mongoose.model('Award', awardSchema);
 
 app.get("/portfolio/:userId", (req, res) => {
   const userId = req.params.userId;
@@ -334,6 +343,7 @@ app.post("/github/:userId", (req, res) => {
       res.status(500).json({ error: "Failed to add github" });
     });
 });
+    
 
 // Start the server
 app.listen(3000, () => {

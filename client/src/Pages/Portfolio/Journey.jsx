@@ -2,14 +2,15 @@ import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
-const Slideshow = () => {
+const Slideshow = ({ journey }) => {
+    console.log(journey);
     const { user, isAuthenticated, isLoading } = useAuth0();
  
 const [Myuser,SetUser]=useState(null);
 
   const slides = [
     {
-      id: 1,
+      id: 0,
       text: "I Attended Lecture of John Smilga from freecode camp",
       image: "first.PNG"
     },
@@ -99,10 +100,10 @@ const [Myuser,SetUser]=useState(null);
           variants={slideVariants}
         >
           <div className="slideshow-text text-center text-3xl text-blue-800 mb-4">
-            {journeys.length>0 && journeys[1].checkpoints[currentSlide].description}
+            {journey && journey.checkpoints[currentSlide].description}
           </div>
           <img
-            src={slides[currentSlide].image}
+            src={journey.checkpoints[currentSlide].imageURL}
             alt="Slide"
             className="slideshow-image w-full rounded-lg"
           />
