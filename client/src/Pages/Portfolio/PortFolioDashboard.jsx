@@ -4,8 +4,8 @@ import ExperienceForm from "./Forms/ExperienceForm";
 import NameForm from "./Forms/NameForm";
 import IntroductionForm from "./Forms/IntroductionForm";
 import LanguageForm from "./Forms/LanguageForm";
-import EducationForm from "./Forms/EducationForm"
-import CertificateForm from "./Forms/CertificateForm"
+import EducationForm from "./Forms/EducationForm";
+import CertificateForm from "./Forms/CertificateForm";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
@@ -16,7 +16,7 @@ const PortfolioDashboard = ({ data }) => {
   const [showExperienceForm, setShowExperienceForm] = useState(false);
   const [showLanguageForm, setShowLanguageForm] = useState(false);
   const [showEducationForm, setShowEducationForm] = useState(false);
-  const [showCertificateForm,setShowCertificateForm] = useState(false)
+  const [showCertificateForm, setShowCertificateForm] = useState(false);
   const [showNameForm, setShowNameForm] = useState(false);
   const [showIntroductionForm, setShowIntroductionForm] = useState(false);
   useEffect(() => {
@@ -59,8 +59,15 @@ const PortfolioDashboard = ({ data }) => {
     };
 
     fetchUserData();
-  }, [showExperienceForm, showLanguageForm, showEducationForm, showCertificateForm, showNameForm, showIntroductionForm]);
-  
+  }, [
+    showExperienceForm,
+    showLanguageForm,
+    showEducationForm,
+    showCertificateForm,
+    showNameForm,
+    showIntroductionForm,
+  ]);
+
   if (!userData) {
     return <div>Loading...</div>;
   }
@@ -83,10 +90,9 @@ const PortfolioDashboard = ({ data }) => {
     setShowEducationForm(!showEducationForm);
   };
 
-  const handleEditCertificate = () =>{
+  const handleEditCertificate = () => {
     setShowCertificateForm(!showCertificateForm);
-
-  }
+  };
 
   const {
     Name,
@@ -173,6 +179,7 @@ const PortfolioDashboard = ({ data }) => {
 
       {/* Experience */}
 
+      {experiences.length > 0 && (
         <div className="bg-white rounded shadow p-4 mb-4">
           <h2 className="text-xl font-bold mb-2 text-black">Experience</h2>
           {experiences.map((exp, index) => (
@@ -190,6 +197,7 @@ const PortfolioDashboard = ({ data }) => {
             Add
           </button>
         </div>
+      )}
       {showExperienceForm && (
         <ExperienceForm
           userId={data[0].owner.id}
@@ -229,6 +237,7 @@ const PortfolioDashboard = ({ data }) => {
         </div>
       )} */}
       {/* Education */}
+      {education.length > 0 && (
         <div className="bg-white rounded shadow p-4 mb-4">
           <h2 className="text-xl font-bold mb-2 text-black">Education</h2>
           {education.map((edu, index) => (
@@ -247,6 +256,7 @@ const PortfolioDashboard = ({ data }) => {
             Add
           </button>
         </div>
+      )}
       {showEducationForm && (
         <EducationForm
           userId={data[0].owner.id}
@@ -254,19 +264,21 @@ const PortfolioDashboard = ({ data }) => {
         />
       )}
       {/* Certificates */}
- 
+      {certificates.length > 0 && (
         <div className="bg-white rounded shadow p-4 mb-4">
           <h2 className="text-xl font-bold mb-2 text-black">Certificates</h2>
           {certificates.map((certificate, index) => (
             <div key={index} className="mb-2">
               <h3 className="font-bold">{certificate.title}</h3>
-              <button
-  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
->
-  <a href={certificate.link}  rel="noopener noreferrer">
-    Certificate
-  </a>
-</button>
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
+                <a
+                  href={certificate.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Certificate
+                </a>
+              </button>
             </div>
           ))}
           <button
@@ -276,7 +288,7 @@ const PortfolioDashboard = ({ data }) => {
             Add
           </button>
         </div>
-
+      )}
       {showCertificateForm && (
         <CertificateForm
           userId={data[0].owner.id}
@@ -301,8 +313,23 @@ const PortfolioDashboard = ({ data }) => {
 
       here
       */}
-      
-    </div> 
+      <section>
+        <div className="bg-white rounded shadow p-4 mb-4">
+          <h2 className="text-xl font-bold mb-2 text-black">
+            Share Your Portfolio
+          </h2>
+          <p className="text-gray-600 mb-4">
+            Your portfolio is now ready! Share it with the world by using the
+            following URL:
+          </p>
+          <div className="bg-gray-100 rounded p-4">
+            <p className="text-blue-500 font-bold break-all">
+              http://localhost:5173/users/${data[0].owner.id}
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 };
 

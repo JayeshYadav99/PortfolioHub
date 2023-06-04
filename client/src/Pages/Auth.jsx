@@ -232,7 +232,7 @@ const Auth = () => {
       ) : (
         <>
           <div className="mt-8">
-            <Card className="w-64 bg-gray-900">
+            <Card className="w-64 bg-gray-900 h">
               <Card.Img
                 variant="top"
                 src={avatarURL}
@@ -309,7 +309,7 @@ const Auth = () => {
           <Button
             variant="primary"
             onClick={handleNext}
-            className="mt-4 bg-purple-500 hover:bg-purple-700 transition-colors duration-300 text-lg py-2 px-8 rounded-lg"
+            className="mt-16 bg-purple-500 hover:bg-purple-700 transition-colors duration-300 text-lg py-2 px-8 rounded-lg"
           >
             Next
           </Button>
