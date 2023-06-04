@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import PageSection from "./PageSection";
 import About from "./About";
 import Contect from "./Contect";
@@ -7,9 +7,10 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Journey from "./JourneyHome";
 import axios from "axios";
 import Certification from "../Certification";
+import SkillsComponent from "./SkillsComponent";
 export default function Profoliotemp() {
   const { user } = useAuth0();
- 
+
   const [userData, setUserData] = useState(null);
   useEffect(() => {
     const fetchUserData = async () => {
@@ -21,16 +22,12 @@ export default function Profoliotemp() {
         console.log(response.data);
         console.log(response.data.Name);
         console.log(response.data.Introduction);
-        
-        if(response)
-        {
+
+        if (response) {
           setUserData(response.data);
-        }
-        else
-        {
+        } else {
           setUserData(" ");
         }
-       
       } catch (error) {
         console.error("Failed to fetch user data:", error);
       }

@@ -6,7 +6,7 @@ const ProjectSection = () => {
       id: 1,
       image:
         "https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/002/490/716/datas/medium.gif",
-      title: "PROJECT 1",
+      title: "CodeHub",
       description:
         "CodeHubs is a dynamic online platform designed for students",
       link: "https://devpost.com/software/codehubs",
@@ -32,7 +32,7 @@ const ProjectSection = () => {
 
       <div className="container">
         {projects.map((project) => (
-          <div className="item" key={project.id}>
+          <div className="item w-16" key={project.id}>
             <img src={project.image} alt="" />
             <div className="text ">
               <h3 className="text-white">{project.title}</h3>
