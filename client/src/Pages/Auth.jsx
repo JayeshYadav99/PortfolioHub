@@ -202,7 +202,7 @@ const handleStart = async (repo) => {
   const Signup = async () => {
     try {
       const data = {
-        userId: repoData[0].owner.id ,
+        userId:repoData[0].owner.id ,
         Name: "",
         Introduction: "",
         experiences: [{}],
