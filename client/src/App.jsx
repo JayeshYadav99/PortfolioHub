@@ -19,6 +19,7 @@ import Contect from "./Pages/Portfolio/Contect";
 import About from "./Pages/Portfolio/About";
 import Journey from "./Pages/Portfolio/Journey"
 import JourneyHome from "./Pages/Portfolio/JourneyHome"
+import Certification from "./Pages/Certification";
 const App = () => {
   return (
     <div>
@@ -47,7 +48,6 @@ const App = () => {
             ></Route>
             <Route exact path="/Contect" element={<Contect />}></Route>
           </Routes>
-
           <Footer />
         </>
       </div>
