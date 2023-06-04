@@ -7,8 +7,10 @@ import ProjectSection from "./ProjectSection";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import { useParams } from 'react-router-dom';
+import Certification from "../Certification";
 export default function Profoliotemp() {
   const { user } = useAuth0();
+  console.log("heello");
 const { id } = useParams();
   const [userData, setUserData] = useState(null);
   useEffect(() => {
@@ -21,6 +23,7 @@ const { id } = useParams();
         console.log(response.data);
         console.log(response.data.Name);
         console.log(response.data.Introduction);
+        console.log(response.data.journeys);
         
         if(response)
         {
@@ -45,7 +48,8 @@ const { id } = useParams();
       <About Experience={userData.experiences} />
       <ProjectSection/>
       <Journey journey={userData.journeys} />
-      <Contect /></>)
+      <Contect />
+      <Certification/></>)
       
 }
     </div>

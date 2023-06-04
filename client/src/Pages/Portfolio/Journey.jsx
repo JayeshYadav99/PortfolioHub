@@ -3,23 +3,26 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 
-const Slideshow = ({ journey }) => {
+const Slideshow = ({ journey }) => 
+{
+
+    console.log(journey);
   const { user } = useAuth0();
   const [journeys, setJourneys] = useState([]);
 
-  useEffect(() => {
-    const fetchJourneys = async () => {
-      try {
-        const userId = user.sub.split("|")[1];
-        const response = await axios.get(`http://localhost:3000/portfolio/${userId}`);
-        setJourneys(response.data.journeys);
-      } catch (error) {
-        console.error("Failed to fetch journeys:", error);
-      }
-    };
+//   useEffect(() => {
+//     const fetchJourneys = async () => {
+//       try {
+//         const userId = user.sub.split("|")[1];
+//         const response = await axios.get(`http://localhost:3000/portfolio/${userId}`);
+//         setJourneys(response.data.journeys);
+//       } catch (error) {
+//         console.error("Failed to fetch journeys:", error);
+//       }
+//     };
 
-    fetchJourneys();
-  }, [user]);
+//     fetchJourneys();
+//   }, [user]);
 
   const [currentSlide, setCurrentSlide] = useState(0);
 

@@ -268,7 +268,7 @@ const Auth = () => {
                   >
                     <Card.Img
                       variant="top"
-                      src="github.png"
+                      src="images.png"
                       className="w-32 h-32 object-cover mt-4"
                     />
 

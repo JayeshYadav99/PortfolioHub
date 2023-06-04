@@ -15,27 +15,27 @@ const Journey = ({journey}) => {
   const [checkpointImageURLs, setCheckpointImageURLs] = useState({});
   const [selectedJourney, setSelectedJourney] = useState(null);
 
-  useEffect(() => {
-    const fetchJourneys = async () => {
-      try {
-        console.log("hii");
-        console.log(user.sub);
-        const Sub = user.sub;
-        const userId = Sub.split("|")[1];
-        console.log(userId);
-        SetUser(userId);
-        const response = await axios.get(`http://localhost:3000/portfolio/${userId}`);
-        console.log(response.data);
-        console.log(response.data.journeys[1]);
-        console.log(response.data.journeys[1].checkpoints[0].description);
-        setJourneys(response.data.journeys);
-      } catch (error) {
-        console.error("Failed to fetch journeys:", error);
-      }
-    };
+//   useEffect(() => {
+//     const fetchJourneys = async () => {
+//       try {
+//         console.log("hii");
+//         console.log(user.sub);
+//         const Sub = user.sub;
+//         const userId = Sub.split("|")[1];
+//         console.log(userId);
+//         SetUser(userId);
+//         const response = await axios.get(`http://localhost:3000/portfolio/${userId}`);
+//         console.log(response.data);
+//         console.log(response.data.journeys[1]);
+//         console.log(response.data.journeys[1].checkpoints[0].description);
+//         setJourneys(response.data.journeys);
+//       } catch (error) {
+//         console.error("Failed to fetch journeys:", error);
+//       }
+//     };
 
-    fetchJourneys();
-  }, [Myuser]);
+//     fetchJourneys();
+//   }, [Myuser]);
 
   useEffect(() => {
     console.log(user);
@@ -97,7 +97,7 @@ const Journey = ({journey}) => {
 
   return (
     <div className="container mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Journeys</h1>
+      <h1 className="text-2xl font-bold mb-4 text-white">Journeys</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         { journeys && journeys.map((journey, index) => (
           <div key={index} className="bg-white rounded shadow p-4">
@@ -107,11 +107,11 @@ const Journey = ({journey}) => {
             >
               {journey.name}
             </h2>
-            <ul>
+            {/* <ul>
               {journey.checkpoints.map((checkpoint, checkpointIndex) => (
                 <li key={checkpointIndex}>{checkpoint.description}</li>
               ))}
-            </ul>
+            </ul> */}
           </div>
         ))}
       </div>

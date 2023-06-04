@@ -267,7 +267,7 @@ const PortfolioDashboard = ({ data }) => {
               <button
   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
 >
-  <a href={certificate.link} target="_blank" rel="noopener noreferrer">
+  <a href={certificate.link}  rel="noopener noreferrer">
     Certificate
   </a>
 </button>
@@ -304,17 +304,8 @@ const PortfolioDashboard = ({ data }) => {
       )}
 
       here
-      {awards.length > 0 && (
-        <div className="bg-white rounded shadow p-4 mb-4">
-          <h2 className="text-xl font-bold mb-2 text-black">Awards</h2>
-          {awards.map((award, index) => (
-            <div key={index} className="mb-2">
-              <h3 className="font-bold">{award.position}</h3>
-              <p className="text-gray-600">{award.title}</p>
-            </div>
-          ))}
-        </div>
-      )} */}
+      */}
+      
     </div> 
   );
 };
