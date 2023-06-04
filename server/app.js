@@ -228,7 +228,7 @@ const Award = mongoose.model('Award', awardSchema);
 
 app.get("/portfolio/:userId", (req, res) => {
   const userId = req.params.userId;
-
+console.log(userId);
   User.findOne({ userId })
     .then((user) => {
       if (!user) {
@@ -313,6 +313,7 @@ app.post("/portfolio", (req, res) => {
       if (existingUser) {
         res.status(200).json({ message: "User with userId already exists" });
       } else {
+        console.log(portfolioData);
         const portfolio = new User(portfolioData);
 
         portfolio
