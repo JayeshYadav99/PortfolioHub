@@ -6,6 +6,7 @@ import ProjectSection from "./ProjectSection";
 import { useAuth0 } from "@auth0/auth0-react";
 import Journey from "./JourneyHome";
 import axios from "axios";
+import Certification from "../Certification";
 import SkillsComponent from "./SkillsComponent";
 export default function Profoliotemp() {
   const { user } = useAuth0();
@@ -47,9 +48,8 @@ export default function Profoliotemp() {
           <About Experience={userData.experiences} />
           <ProjectSection />
           <Journey />
-
-          <SkillsComponent />
           <Contect />
+          <Certification />
         </>
       )}
     </div>
