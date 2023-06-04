@@ -18,17 +18,5 @@ PortfolioHub is a dynamic web application built using the MERN stack that allows
 - Axios 🌐: Promise-based HTTP client for making API calls.
 - Other dependencies: [List any other significant dependencies or technologies used]
 
-## Getting Started
 
-### Prerequisites
 
-- Node.js (version X.X.X)
-- MongoDB (version X.X.X)
-- [List any other prerequisites]
-
-### Installation
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/your-username/portfoliohub.git
