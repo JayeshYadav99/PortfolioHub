@@ -5,6 +5,8 @@ import NameForm from "./Forms/NameForm";
 import IntroductionForm from "./Forms/IntroductionForm";
 import LanguageForm from "./Forms/LanguageForm";
 import EducationForm from "./Forms/EducationForm"
+import CertificateForm from "./Forms/CertificateForm"
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -14,7 +16,7 @@ const PortfolioDashboard = ({ data }) => {
   const [showExperienceForm, setShowExperienceForm] = useState(false);
   const [showLanguageForm, setShowLanguageForm] = useState(false);
   const [showEducationForm, setShowEducationForm] = useState(false);
-
+  const [showCertificateForm,setShowCertificateForm] = useState(false)
   const [showNameForm, setShowNameForm] = useState(false);
   const [showIntroductionForm, setShowIntroductionForm] = useState(false);
   useEffect(() => {
@@ -59,6 +61,11 @@ const PortfolioDashboard = ({ data }) => {
     // alert(showLanguageForm)
     setShowEducationForm(!showEducationForm);
   };
+
+  const handleEditCertificate = () =>{
+    setShowCertificateForm(!showCertificateForm);
+
+  }
 
   const {
     Name,
@@ -235,15 +242,32 @@ const PortfolioDashboard = ({ data }) => {
           <h2 className="text-xl font-bold mb-2 text-black">Certificates</h2>
           {certificates.map((certificate, index) => (
             <div key={index} className="mb-2">
-              <h3 className="font-bold">{certificate.position}</h3>
-              <p className="text-gray-600">{certificate.title}</p>
+              <h3 className="font-bold">{certificate.title}</h3>
+              <button
+  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+>
+  <a href={certificate.link} target="_blank" rel="noopener noreferrer">
+    Certificate
+  </a>
+</button>
             </div>
           ))}
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+            onClick={handleEditCertificate}
+          >
+            Add
+          </button>
         </div>
       )}
-
+      {showCertificateForm && (
+        <CertificateForm
+          userId={data[0].owner.id}
+          setShowCertificateForm={setShowCertificateForm}
+        />
+      )}
       {/* Volunteer */}
-      {volunteer.length > 0 && (
+      {/* {volunteer.length > 0 && (
         <div className="bg-white rounded shadow p-4 mb-4">
           <h2 className="text-xl font-bold mb-2 text-black">
             Volunteer Experience
@@ -258,7 +282,7 @@ const PortfolioDashboard = ({ data }) => {
         </div>
       )}
 
-      {/* Awards */}
+      here
       {awards.length > 0 && (
         <div className="bg-white rounded shadow p-4 mb-4">
           <h2 className="text-xl font-bold mb-2 text-black">Awards</h2>
@@ -269,8 +293,8 @@ const PortfolioDashboard = ({ data }) => {
             </div>
           ))}
         </div>
-      )}
-    </div>
+      )} */}
+    </div> 
   );
 };
 

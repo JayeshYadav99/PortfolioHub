@@ -24,7 +24,7 @@ const EducationForm = ({userId, setShowEducationForm}) => {
     
 
     try {
-      await axios.put( `http://localhost:3000/education/${userId}`, newEducation);
+      await axios.post( `http://localhost:3000/education/${userId}`, newEducation);
       // Success! Handle any necessary actions after successful POST request
       alert('Educartion added successfully.');
       setPosition('');

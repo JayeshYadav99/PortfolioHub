@@ -95,11 +95,12 @@ const educationSchema = new mongoose.Schema({
 });
 
 const certificateSchema = new mongoose.Schema({
-  position: {
+ 
+  title: {
     type: String,
     required: false,
   },
-  title: {
+  link: {
     type: String,
     required: false,
   },
@@ -313,6 +314,18 @@ app.post("/education/:userId", (req, res) => {
     })
     .catch((error) => {
       res.status(500).json({ error: "Failed to add Experience" });
+    });
+});
+app.post("/certificate/:userId", (req, res) => {
+  const userId = req.params.userId;
+
+  console.log(req.body);
+  User.findOneAndUpdate({ userId }, { $push: { certificates: req.body } })
+    .then(() => {
+      res.json({ message: "Certificate added successfully" });
+    })
+    .catch((error) => {
+      res.status(500).json({ error: "Failed to add certificate" });
     });
 });
 
