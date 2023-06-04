@@ -3,9 +3,13 @@ import PageSection from "./PageSection";
 import About from "./About";
 import Contect from "./Contect";
 import ProjectSection from "./ProjectSection";
+<<<<<<< Updated upstream
 import { useAuth0 } from "@auth0/auth0-react";
 import Journey from "./JourneyHome";
 import axios from "axios";
+=======
+import SkillsComponent from "./SkillsComponent";
+>>>>>>> Stashed changes
 export default function Profoliotemp() {
   const { user } = useAuth0();
  
@@ -40,6 +44,7 @@ export default function Profoliotemp() {
 
   return (
     <div>
+<<<<<<< Updated upstream
     {userData &&(<><PageSection Name={userData.Name} Introduction={userData.Introduction}  image={userData.github[0].picture}/>
     <About Experience={userData.experiences} />
     <ProjectSection/>
@@ -48,5 +53,13 @@ export default function Profoliotemp() {
     
 }
   </div>
+=======
+      <PageSection />
+      <About />
+      <ProjectSection />
+      <Contect />
+      <SkillsComponent />
+    </div>
+>>>>>>> Stashed changes
   );
 }
