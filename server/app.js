@@ -95,7 +95,7 @@ const educationSchema = new mongoose.Schema({
 });
 
 const certificateSchema = new mongoose.Schema({
-  position: {
+  link: {
     type: String,
     required: false,
   },
@@ -278,6 +278,18 @@ app.put("/portfolio/Introduction/:userId", (req, res) => {
       res.status(500).json({ error: "Failed to update the name" });
     });
 });
+app.post("/certificate/:userId", (req, res) => {
+  const userId = req.params.userId;
+
+  console.log(req.body);
+  User.findOneAndUpdate({ userId }, { $push: { certificates: req.body } })
+    .then(() => {
+      res.json({ message: "Certificate added successfully" });
+    })
+    .catch((error) => {
+      res.status(500).json({ error: "Failed to add certificate" });
+    });
+});
 app.post("/education/:userId", (req, res) => {
   const userId = req.params.userId;
 
@@ -290,7 +302,21 @@ app.post("/education/:userId", (req, res) => {
       res.status(500).json({ error: "Failed to add Experience" });
     });
 });
-
+app.post("/language/:userId", (req, res) => {
+  const userId = req.params.userId;
+  const languages = req.body.languages;
+  console.log(req.body);
+  User.findOneAndUpdate(
+    { userId },
+    { $push: { languages: { $each: languages } } }
+  )
+    .then(() => {
+      res.json({ message: "Languages added successfully" });
+    })
+    .catch((error) => {
+      res.status(500).json({ error: "Failed to add languages" });
+    });
+});
 app.post("/publication/:userId", (req, res) => {
   const userId = req.params.userId;
 
@@ -311,25 +337,26 @@ app.post("/portfolio", (req, res) => {
   User.findOne({ userId: portfolioData.userId })
     .then((existingUser) => {
       if (existingUser) {
-        res.status(200).json({ message: "User with userId already exists" });
-      } else {
-        console.log(portfolioData);
-        const portfolio = new User(portfolioData);
-
-        portfolio
-          .save()
-          .then(() => {
-            res.status(200).json({ message: "Portfolio information saved successfully" });
-          })
-          .catch((error) => {
-            res.status(500).json({ error: "Failed to save portfolio information" });
-          });
+        return res.status(200).json({ message: "User with userId already exists" });
       }
+
+      console.log(portfolioData);
+      const portfolio = new User(portfolioData);
+
+      portfolio
+        .save()
+        .then(() => {
+          res.status(200).json({ message: "Portfolio information saved successfully" });
+        })
+        .catch((error) => {
+          res.status(500).json({ error: "Failed to save portfolio information" });
+        });
     })
     .catch((error) => {
       res.status(500).json({ error: "Failed to check user existence" });
     });
 });
+
 
 
 app.post("/journey/:userId", (req, res) => {
