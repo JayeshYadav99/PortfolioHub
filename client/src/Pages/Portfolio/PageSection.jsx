@@ -1,5 +1,12 @@
 import React from "react";
 import "./PageSection.css"; // Import the CSS file for styling
+import {
+  FaGithub,
+  FaLinkedin,
+  FaYoutube,
+  FaTwitter,
+  FaStackOverflow,
+} from "react-icons/fa";
 
 const PageSection = () => {
   return (
@@ -69,18 +76,11 @@ const PageSection = () => {
           </div>
           <div className="flex items-center justify-end">
             <p className="text-sm">View More</p>
-            <svg
-              className="w-4 h-4 ml-1"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M5.293 4.293a1 1 0 011.414 0L10 8.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
+            <FaGithub className="w-4 h-4 ml-1 text-white" />
+            <FaLinkedin className="w-4 h-4 ml-1 text-white" />
+            <FaYoutube className="w-4 h-4 ml-1 text-white" />
+            <FaTwitter className="w-4 h-4 ml-1 text-white" />
+            <FaStackOverflow className="w-4 h-4 ml-1 text-white" />
           </div>
         </div>
       </div>
