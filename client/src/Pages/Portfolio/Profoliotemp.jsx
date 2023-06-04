@@ -1,18 +1,15 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import PageSection from "./PageSection";
 import About from "./About";
 import Contect from "./Contect";
 import ProjectSection from "./ProjectSection";
-<<<<<<< Updated upstream
 import { useAuth0 } from "@auth0/auth0-react";
 import Journey from "./JourneyHome";
 import axios from "axios";
-=======
 import SkillsComponent from "./SkillsComponent";
->>>>>>> Stashed changes
 export default function Profoliotemp() {
   const { user } = useAuth0();
- 
+
   const [userData, setUserData] = useState(null);
   useEffect(() => {
     const fetchUserData = async () => {
@@ -24,16 +21,12 @@ export default function Profoliotemp() {
         console.log(response.data);
         console.log(response.data.Name);
         console.log(response.data.Introduction);
-        
-        if(response)
-        {
+
+        if (response) {
           setUserData(response.data);
-        }
-        else
-        {
+        } else {
           setUserData(" ");
         }
-       
       } catch (error) {
         console.error("Failed to fetch user data:", error);
       }
@@ -44,22 +37,21 @@ export default function Profoliotemp() {
 
   return (
     <div>
-<<<<<<< Updated upstream
-    {userData &&(<><PageSection Name={userData.Name} Introduction={userData.Introduction}  image={userData.github[0].picture}/>
-    <About Experience={userData.experiences} />
-    <ProjectSection/>
-    <Journey />
-    <Contect /></>)
-    
-}
-  </div>
-=======
-      <PageSection />
-      <About />
-      <ProjectSection />
-      <Contect />
-      <SkillsComponent />
+      {userData && (
+        <>
+          <PageSection
+            Name={userData.Name}
+            Introduction={userData.Introduction}
+            image={userData.github[0].picture}
+          />
+          <About Experience={userData.experiences} />
+          <ProjectSection />
+          <Journey />
+
+          <SkillsComponent />
+          <Contect />
+        </>
+      )}
     </div>
->>>>>>> Stashed changes
   );
 }

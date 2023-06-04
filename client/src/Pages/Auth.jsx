@@ -131,7 +131,6 @@ const Auth = () => {
 
       if (response.ok) {
         const user = await response.json();
-        console.log(user);
         fetchRepoData(user.login);
         const username = user.login;
         fetch(`https://api.github.com/users/${username}`)
@@ -167,10 +166,7 @@ const Auth = () => {
     console.log(repoData[0].owner);
     console.log(repoData);
     console.log(repoData[0].owner.id);
-<<<<<<< Updated upstream
     Signup();
-=======
->>>>>>> Stashed changes
     postData();
     setShowDashboard(true);
   };
@@ -186,11 +182,10 @@ const Auth = () => {
     }
   };
 
-<<<<<<< Updated upstream
   const Signup = async () => {
     try {
       const data = {
-        userId:repoData[0].owner.id ,
+        userId: repoData[0].owner.id,
         Name: "",
         Introduction: "",
         experiences: [{}],
@@ -215,24 +210,18 @@ const Auth = () => {
           },
         ],
       };
-  
-      const response = await axios.post("http://localhost:3000/portfolio", data);
+
+      const response = await axios.post(
+        "http://localhost:3000/portfolio",
+        data
+      );
       console.log("Response:", response.data);
     } catch (error) {
       console.error("Error:", error);
     }
   };
 
-
-
-
-
-
-
-useEffect(() => {
-=======
   useEffect(() => {
->>>>>>> Stashed changes
     auth();
   }, []);
 
