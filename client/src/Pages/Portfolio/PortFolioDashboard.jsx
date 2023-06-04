@@ -131,6 +131,7 @@ const PortfolioDashboard = ({ data }) => {
         <h3 className="font-bold">{exp.position}</h3>
         <p className="text-blue-600">{exp.company}</p>
         <p className="text-blue-600">{exp.duration}</p>
+        <p className="text-blue-600">{exp.Experience}</p>
       </div>
     ))}
     <button
