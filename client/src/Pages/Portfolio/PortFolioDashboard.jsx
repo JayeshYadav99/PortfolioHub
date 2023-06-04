@@ -4,6 +4,8 @@ import ExperienceForm from "./Forms/ExperienceForm";
 import NameForm from "./Forms/NameForm";
 import IntroductionForm from "./Forms/IntroductionForm";
 import LanguageForm from "./Forms/LanguageForm";
+import EducationForm from "./Forms/EducationForm"
+import CertificateForm from "./Forms/CertificateForm"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
@@ -13,7 +15,8 @@ const PortfolioDashboard = ({ data }) => {
   const [userData, setUserData] = useState(null);
   const [showExperienceForm, setShowExperienceForm] = useState(false);
   const [showLanguageForm, setShowLanguageForm] = useState(false);
-
+  const [showEducationForm, setShowEducationForm] = useState(false);
+  const [showCertificateForm,setShowCertificateForm] = useState(false)
   const [showNameForm, setShowNameForm] = useState(false);
   const [showIntroductionForm, setShowIntroductionForm] = useState(false);
   useEffect(() => {
@@ -36,7 +39,28 @@ const PortfolioDashboard = ({ data }) => {
 
     fetchUserData();
   }, []);
+  useEffect(() => {
+    // Call the fetchData function whenever any of the state variables change
+    const fetchUserData = async () => {
+      try {
+        const userId = data[0].owner.id;
+        const response = await axios.get(
+          `http://localhost:3000/portfolio/${userId}`
+        );
+        console.log(response.data);
+        if (response) {
+          setUserData(response.data);
+        } else {
+          setUserData(" ");
+        }
+      } catch (error) {
+        console.error("Failed to fetch user data:", error);
+      }
+    };
 
+    fetchUserData();
+  }, [showExperienceForm, showLanguageForm, showEducationForm, showCertificateForm, showNameForm, showIntroductionForm]);
+  
   if (!userData) {
     return <div>Loading...</div>;
   }
@@ -54,6 +78,15 @@ const PortfolioDashboard = ({ data }) => {
     // alert(showLanguageForm)
     setShowLanguageForm(!showLanguageForm);
   };
+  const handleEditEducation = () => {
+    // alert(showLanguageForm)
+    setShowEducationForm(!showEducationForm);
+  };
+
+  const handleEditCertificate = () =>{
+    setShowCertificateForm(!showCertificateForm);
+
+  }
 
   const {
     Name,
@@ -70,8 +103,8 @@ const PortfolioDashboard = ({ data }) => {
     awards,
     Introduction,
   } = userData;
-  console.clear();
-  console.log(data);
+  // console.clear();
+  // console.log(data);
   // console.log(dfd);
 
   return (
@@ -145,10 +178,10 @@ const PortfolioDashboard = ({ data }) => {
           <h2 className="text-xl font-bold mb-2 text-black">Experience</h2>
           {experiences.map((exp, index) => (
             <div key={index} className="mb-2">
-              <h3 className="font-bold">{exp.position}</h3>
-              <p className="text-blue-600">{exp.company}</p>
-              <p className="text-blue-600">{exp.duration}</p>
-              <p className="text-blue-600">{exp.Experience}</p>
+              <h3 className="font-bold text-xl">{exp.position}</h3>
+              <p className="text-blue-600 font-bold pl-1">{exp.company}</p>
+              <p className="text-blue-600 pl-4">{exp.duration}</p>
+              <p className="text-blue-600 pl-4">{exp.Experience}</p>
             </div>
           ))}
           <button
@@ -210,24 +243,52 @@ const PortfolioDashboard = ({ data }) => {
               <p className="text-gray-600">{`${edu.startDate} - ${edu.endDate}`}</p>
             </div>
           ))}
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+            onClick={handleEditEducation}
+          >
+            Add
+          </button>
         </div>
       )}
-
+      {showEducationForm && (
+        <EducationForm
+          userId={data[0].owner.id}
+          setShowEducationForm={setShowEducationForm}
+        />
+      )}
       {/* Certificates */}
       {certificates.length > 0 && (
         <div className="bg-white rounded shadow p-4 mb-4">
           <h2 className="text-xl font-bold mb-2 text-black">Certificates</h2>
           {certificates.map((certificate, index) => (
             <div key={index} className="mb-2">
-              <h3 className="font-bold">{certificate.position}</h3>
-              <p className="text-gray-600">{certificate.title}</p>
+              <h3 className="font-bold">{certificate.title}</h3>
+              <button
+  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+>
+  <a href={certificate.link} target="_blank" rel="noopener noreferrer">
+    Certificate
+  </a>
+</button>
             </div>
           ))}
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+            onClick={handleEditCertificate}
+          >
+            Add
+          </button>
         </div>
       )}
-
+      {showCertificateForm && (
+        <CertificateForm
+          userId={data[0].owner.id}
+          setShowCertificateForm={setShowCertificateForm}
+        />
+      )}
       {/* Volunteer */}
-      {volunteer.length > 0 && (
+      {/* {volunteer.length > 0 && (
         <div className="bg-white rounded shadow p-4 mb-4">
           <h2 className="text-xl font-bold mb-2 text-black">
             Volunteer Experience
@@ -242,7 +303,7 @@ const PortfolioDashboard = ({ data }) => {
         </div>
       )}
 
-      {/* Awards */}
+      here
       {awards.length > 0 && (
         <div className="bg-white rounded shadow p-4 mb-4">
           <h2 className="text-xl font-bold mb-2 text-black">Awards</h2>
@@ -253,8 +314,8 @@ const PortfolioDashboard = ({ data }) => {
             </div>
           ))}
         </div>
-      )}
-    </div>
+      )} */}
+    </div> 
   );
 };
 
