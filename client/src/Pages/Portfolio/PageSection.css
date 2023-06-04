@@ -26,3 +26,39 @@
   white-space: nowrap;
   animation: typing 3s steps(40, end) 1s forwards;
 }
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.social-icon {
+  font-size: 24px;
+  margin-right: 8px;
+  transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.2);
+}
+.social-icon.github:hover {
+  background-color: black;
+}
+
+.social-icon.linkedin:hover {
+  background-color: #0a66c2;
+  color: white;
+}
+
+.social-icon.youtube:hover {
+  color: #ff0000;
+}
+
+.social-icon.twitter:hover {
+  background-color: #1da1f2;
+}
+
+.social-icon.stackoverflow:hover {
+  background-color: #f48024;
+}

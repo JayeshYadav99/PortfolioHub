@@ -63,24 +63,31 @@ const PageSection = () => {
                 Articles
               </a>{" "}
               or swaying to the rhythm of Pop Music &amp; Jazz, losing myself in
-              the captivating flow of melodies. Anyways, you can{" "}
-              <a
-                className="text-blue-500 hover:underline"
-                aria-label="Go to Contact Page"
-                href="/contact"
-              >
-                Contact Me
-              </a>
-              .
+              the captivating flow of melodies.
             </p>
           </div>
-          <div className="flex items-center justify-end">
+          <div className="social-icons">
+            <FaGithub className="social-icon github" />
+            <FaLinkedin className="social-icon linkedin" />
+            <FaYoutube className="social-icon youtube" />
+            <FaTwitter className="social-icon twitter" />
+            <FaStackOverflow className="social-icon stackoverflow" />
+          </div>
+          <div className="flex items-center justify-end text-center">
             <p className="text-sm">View More</p>
-            <FaGithub className="w-4 h-4 ml-1 text-white" />
-            <FaLinkedin className="w-4 h-4 ml-1 text-white" />
-            <FaYoutube className="w-4 h-4 ml-1 text-white" />
-            <FaTwitter className="w-4 h-4 ml-1 text-white" />
-            <FaStackOverflow className="w-4 h-4 ml-1 text-white" />
+
+            <svg
+              className="w-4 h-4 ml-1"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M5.293 4.293a1 1 0 011.414 0L10 8.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                clipRule="evenodd"
+              />
+            </svg>
           </div>
         </div>
       </div>
