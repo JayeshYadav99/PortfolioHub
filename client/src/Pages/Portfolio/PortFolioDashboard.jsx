@@ -39,7 +39,28 @@ const PortfolioDashboard = ({ data }) => {
 
     fetchUserData();
   }, []);
+  useEffect(() => {
+    // Call the fetchData function whenever any of the state variables change
+    const fetchUserData = async () => {
+      try {
+        const userId = data[0].owner.id;
+        const response = await axios.get(
+          `http://localhost:3000/portfolio/${userId}`
+        );
+        console.log(response.data);
+        if (response) {
+          setUserData(response.data);
+        } else {
+          setUserData(" ");
+        }
+      } catch (error) {
+        console.error("Failed to fetch user data:", error);
+      }
+    };
 
+    fetchUserData();
+  }, [showExperienceForm, showLanguageForm, showEducationForm, showCertificateForm, showNameForm, showIntroductionForm]);
+  
   if (!userData) {
     return <div>Loading...</div>;
   }
